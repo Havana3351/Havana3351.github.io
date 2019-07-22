@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>Tag: 前缀和与二分统计 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/前缀和与二分统计/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -152,56 +152,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-CSU-ACM-2019暑假集训热身赛-F题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/" class="archive-article-date">
+  	<time datetime="2019-07-22T14:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/">CSU-ACM 2019暑假集训热身赛-F题解</a>
+      <a class="archive-article-title" href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/">CSU-ACM 2019暑假集训热身赛-F题解</a>
     </h1>
   
 
-        
-        <a href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/" class="archive-article-date">
-  	<time datetime="2019-07-22T14:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目详情（Superhero-Battle）"><a href="#题目详情（Superhero-Battle）" class="headerlink" title="题目详情（Superhero Battle）"></a>题目详情（Superhero Battle）</h1><p>A superhero fights with a monster. The battle consists of rounds, each of which lasts exactly n minutes. After a round ends, the next round starts immediately. This is repeated over and over again.</p>
-<p>Each round has the same scenario. It is described by a sequence of n numbers: d1,d2,…,dn (−106≤di≤106). The i-th element means that monster’s hp (hit points) changes by the value di during the i-th minute of each round. Formally, if before the i-th minute of a round the monster’s hp is h, then after the i-th minute it changes to h:=h+di.</p>
-<p>The monster’s initial hp is H. It means that before the battle the monster has H hit points. Print the first minute after which the monster dies. The monster dies if its hp is less than or equal to 0. Print -1 if the battle continues infinitely.</p>
-<p>Input</p>
-<p>The first line contains two integers H and n (1≤H≤1012, 1≤n≤2⋅105). The second line contains the sequence of integers d1,d2,…,dn (−106≤di≤106), where di is the value to change monster’s hp in the i-th minute of a round.</p>
-<p>Output</p>
-<p>Print -1 if the superhero can’t kill the monster and the battle will last infinitely. Otherwise, print the positive integer k such that k is the first minute after which the monster is dead.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>我们先利用求前缀和的方式求出怪兽在一个大回合内的变化情况，并且算出在一个大回合内怪兽掉血最多的时刻以及当时的掉血数(后面是很重要的判断条件)。中间一些细节的判断在此略过，代码注释中有。主要说说最为核心的二分算法：</p>
-<ol>
-<li>设置上下界</li>
-<li>构建while循环</li>
-<li>写一个judge函数(用来判定更新哪一个边界)</li>
-</ol>
-<p>写这个judge函数时就会用到前面我们所计算的一个大回合内血量最少的。我们判断在现有mid轮过后，怪兽血量是否还大于一个回合内掉血最多的值，如果大于修改上限，如果小于修改下限。</p>
-<ol start="4">
-<li>用二分法确定了怪兽死亡的回合后再用for循环确定死亡时刻。</li>
-</ol>
-<h1 id="详细代码"><a href="#详细代码" class="headerlink" title="详细代码"></a>详细代码</h1><blockquote>
-<p>#include <iostream> <br></iostream></p>
-<p>#include <cmath> <br><br>using namespace std; <br><br>long long n,h[200005],H; <br><br>long long sum[200005]; <br><br>long long minn=999999999,num=0; <br><br>bool judge(long long mid){ <br><br>    if(H+mid<em>sum[n] &gt; abs(minn)) <br><br>    // 判断血量经过mid个大回合之后 是否还大于一个回合中掉血最多的时刻 <br><br>        return true; <br><br>    return false; <br><br>} <br><br>int main() { <br><br>    cin &gt;&gt; H &gt;&gt; n;  //H代表怪兽血量，n代表血量变化的方式数 <br><br>    for(int i = 1;i &lt;= n;i++){ <br><br>        cin &gt;&gt; h[i];  // 存放血量变化方式  <br><br>        sum[i] = sum[i-1]+h[i];  //对一个“大回合”怪兽的血量变化进行记录  <br><br>        minn = min(minn,sum[i]); //找到每一大回合中怪兽血量减掉最多的时候 <br><br>    } <br><br>    if(sum[n]&gt;=0 &amp;&amp; H+minn&gt;0){<br><br>    //如果一个大回合怪物血量不减少并且在第一回合血最少时也死不掉 <br><br>        cout &lt;&lt; “-1” &lt;&lt; endl;<br><br>        return 0;<br><br>    }<br><br>    long long round = 0;<br><br>    if(H+minn &gt; 0){<br><br>        num = H / abs(sum[n]);  // 算出二分查找的上限 <br><br>        long long l = 1,r = num;<br><br>        while(l &lt; r){<br><br>            long long mid = (l+r)&gt;&gt;1;<br><br>            if(judge(mid)) l = mid+1;  //大于说明还不够 把下限变大 <br><br>            else r = mid;   //将上限变小 <br><br>        }<br><br>        round=l; <br><br>    } <br><br>    long long rest = H - round</em>abs(sum[n]),ans=0;<br><br>    //当二分法结束时我们只找到了怪兽死掉的大回合 具体时刻还不知道 <br><br>    ans += round * n;  //先将时间算到这个大回合 <br><br>    for(int i = 1;i &lt;= n;i++){  // 用for循环找出怪物死亡的确切时刻 <br><br>        if(rest+sum[i] &lt;= 0){<br><br>            ans += i;<br><br>            break;<br><br>        }<br><br>    }<br><br>    cout &lt;&lt; ans &lt;&lt; endl;<br><br>    return 0;<br><br>}<br></cmath></p>
-</blockquote>
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>&lt;syxsyx.top&gt;</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -213,193 +191,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/18/我的第一篇博客/">我的第一篇博客</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/18/我的第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-17T16:18:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>   第一次写博客，有点激动，不知道写点啥。</p>
-<p>   我是一名即将上大二的新疆大学的软件工程专业学生。</p>
-<p>   暑假的时候突然想做一个自己的静态博客。就用hexo搭建了一个。</p>
-<p>   平时写markdown的话用的是vscode，还不错。</p>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>   以后写点什么？？？</p>
-<p>   这个问题不算太难说：</p>
-<ol>
-<li>自我介绍</li>
-<li>学习心得</li>
-<li>技术交流</li>
-<li>生活趣事</li>
-</ol>
-<hr>
-<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>   感谢大家看我的博客，以及对我博客的支持。</p>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/18/我的第一篇博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/18/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/18/hello-world/" class="archive-article-date">
-  	<time datetime="2019-07-17T16:04:04.660Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/18/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -421,10 +225,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
