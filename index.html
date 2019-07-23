@@ -177,6 +177,9 @@
 <p>You are given a string s consisting of n lowercase Latin letters.</p>
 <p>In one move you can take any subsequence t of the given string and add it to the set S. The set S can’t contain duplicates. This move costs n−|t|, where |t| is the length of the added subsequence (i.e. the price equals to the number of the deleted characters).</p>
 <p>Your task is to find out the minimum possible total cost to obtain a set S of size k or report that it is impossible to do so.</p>
+<details>
+<summary>展开查看</summary>
+
 <p>Input<br>The first line of the input contains two integers n and k (1≤n,k≤100) — the length of the string and the size of the set, correspondingly.</p>
 <p>The second line of the input contains a string s consisting of n lowercase Latin letters.</p>
 <p>Output<br>Print one integer — if it is impossible to obtain the set S of size k, print -1. Otherwise, print the minimum possible total cost to do it.</p>
@@ -184,7 +187,7 @@
 <h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	set&lt;string&gt; st;  //集合可以排除重复 </span><br><span class="line">	queue&lt;string&gt; q; // 实现 bfs</span><br><span class="line">	string s;</span><br><span class="line">	int n,k;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	int ans = 0;</span><br><span class="line">	q.push(s);</span><br><span class="line">	st.insert(s);</span><br><span class="line">	while(!q.empty() &amp;&amp; int(st.size()) &lt; k)&#123;</span><br><span class="line">		string t = q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		for(int i=0;i&lt;int(t.size());i++)&#123;</span><br><span class="line">		//这是为了结合bfs从少至多的遍历所有可能字符串 </span><br><span class="line">			string tmp = t;</span><br><span class="line">			tmp.erase(i,1);  //删除字符 </span><br><span class="line">			if(!st.count(tmp) &amp;&amp; int(st.size())+1 &lt;= k)&#123;</span><br><span class="line">			//判断现有字符串是否重复，长度是否足够 </span><br><span class="line">				q.push(tmp);</span><br><span class="line">				st.insert(tmp);</span><br><span class="line">				ans += n - int(tmp.size()); //计算代价 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(int(st.size()) &lt; k)</span><br><span class="line">		cout &lt;&lt; &quot;-1&quot; &lt;&lt;  endl;</span><br><span class="line">	else</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://www.cnblogs.com/yzm10/p/11102020.html" target="_blank" rel="noopener">https://www.cnblogs.com/yzm10/p/11102020.html</a></p>
-
+</details>
       
 
       
@@ -767,19 +770,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">一个数学问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">前缀和与二分统计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vector</a>
+                <a href="javascript:void(0)" class="js-tag color2">一个数学问题</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">bfs set</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vector</a>
               </li>
             
             <div class="clearfix"></div>
