@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>acm训练赛-E题解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="传送门题目详情(Subsequences (easy version))The only difference between the easy and the hard versions is constraints. A subsequence is a string that can be derived from another string by deleting some or no">
+<meta name="keywords" content="bfs set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="acm训练赛-E题解">
+<meta property="og:url" content="http://yoursite.com/2019/07/23/acm训练赛-E题解/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="传送门题目详情(Subsequences (easy version))The only difference between the easy and the hard versions is constraints. A subsequence is a string that can be derived from another string by deleting some or no">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-23T06:29:40.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="acm训练赛-E题解">
+<meta name="twitter:description" content="传送门题目详情(Subsequences (easy version))The only difference between the easy and the hard versions is constraints. A subsequence is a string that can be derived from another string by deleting some or no">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,36 +155,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-acm训练赛-E题解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/acm训练赛-E题解/" class="archive-article-date">
-  	<time datetime="2019-07-23T05:15:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/acm训练赛-E题解/">acm训练赛-E题解</a>
+    <h1 class="article-title" itemprop="name">
+      acm训练赛-E题解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/23/acm训练赛-E题解/" class="archive-article-date">
+  	<time datetime="2019-07-23T05:15:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313088#problem/E" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情-Subsequences-easy-version"><a href="#题目详情-Subsequences-easy-version" class="headerlink" title="题目详情(Subsequences (easy version))"></a>题目详情(Subsequences (easy version))</h1><p>The only difference between the easy and the hard versions is constraints.</p>
+<p>A subsequence is a string that can be derived from another string by deleting some or no symbols without changing the order of the remaining symbols. Characters to be deleted are not required to go successively, there can be any gaps between them. For example, for the string “abaca” the following strings are subsequences: “abaca”, “aba”, “aaa”, “a” and “” (empty string). But the following strings are not subsequences: “aabaca”, “cb” and “bcaa”.</p>
+<p>You are given a string s consisting of n lowercase Latin letters.</p>
+<p>In one move you can take any subsequence t of the given string and add it to the set S. The set S can’t contain duplicates. This move costs n−|t|, where |t| is the length of the added subsequence (i.e. the price equals to the number of the deleted characters).</p>
+<p>Your task is to find out the minimum possible total cost to obtain a set S of size k or report that it is impossible to do so.</p>
+<p>Input<br>The first line of the input contains two integers n and k (1≤n,k≤100) — the length of the string and the size of the set, correspondingly.</p>
+<p>The second line of the input contains a string s consisting of n lowercase Latin letters.</p>
+<p>Output<br>Print one integer — if it is impossible to obtain the set S of size k, print -1. Otherwise, print the minimum possible total cost to do it.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>我们利用bfs的广度优先搜索确保我们可以用最小的代价解决问题，利用set容器我们可以进行方便查重。话不多说，上代码。</p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	set&lt;string&gt; st;  //集合可以排除重复 </span><br><span class="line">	queue&lt;string&gt; q; // 实现 bfs</span><br><span class="line">	string s;</span><br><span class="line">	int n,k;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	int ans = 0;</span><br><span class="line">	q.push(s);</span><br><span class="line">	st.insert(s);</span><br><span class="line">	while(!q.empty() &amp;&amp; int(st.size()) &lt; k)&#123;</span><br><span class="line">		string t = q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		for(int i=0;i&lt;int(t.size());i++)&#123;</span><br><span class="line">		//这是为了结合bfs从少至多的遍历所有可能字符串 </span><br><span class="line">			string tmp = t;</span><br><span class="line">			tmp.erase(i,1);  //删除字符 </span><br><span class="line">			if(!st.count(tmp) &amp;&amp; int(st.size())+1 &lt;= k)&#123;</span><br><span class="line">			//判断现有字符串是否重复，长度是否足够 </span><br><span class="line">				q.push(tmp);</span><br><span class="line">				st.insert(tmp);</span><br><span class="line">				ans += n - int(tmp.size()); //计算代价 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(int(st.size()) &lt; k)</span><br><span class="line">		cout &lt;&lt; &quot;-1&quot; &lt;&lt;  endl;</span><br><span class="line">	else</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://www.cnblogs.com/yzm10/p/11102020.html" target="_blank" rel="noopener">https://www.cnblogs.com/yzm10/p/11102020.html</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,187 +227,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/23/acm训练赛-E题解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/acm训练赛-D题解/" class="archive-article-date">
-  	<time datetime="2019-07-23T02:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/23/acm训练赛-D题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">acm训练赛-D题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/acm训练赛-D题解/">acm训练赛-D题解</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vector</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/acm训练赛-C题解/" class="archive-article-date">
-  	<time datetime="2019-07-23T00:42:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/acm训练赛-C题解/">acm训练赛-Computer Game</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">一个数学问题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/" class="archive-article-date">
-  	<time datetime="2019-07-22T14:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/">CSU-ACM 2019暑假集训热身赛-F题解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和与二分统计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/18/我的第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-17T16:18:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/18/我的第一篇博客/">我的第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/18/hello-world/" class="archive-article-date">
-  	<time datetime="2019-07-17T16:04:04.660Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/18/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -394,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
