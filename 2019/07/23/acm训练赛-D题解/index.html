@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>acm训练赛-Computer Game | Hexo</title>
+  <title>acm训练赛-D题解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目详情Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of the">
-<meta name="keywords" content="一个数学问题">
+  <meta name="description" content="题目详情传送门 This problem is actually a subproblem of problem G from the same contest. There are n candies in a candy box. The type of the i-th candy is ai (1≤ai≤n). You have to prepare a gift using some o">
+<meta name="keywords" content="vector">
 <meta property="og:type" content="article">
-<meta property="og:title" content="acm训练赛-Computer Game">
-<meta property="og:url" content="http://yoursite.com/2019/07/23/acm训练赛-C题解/index.html">
+<meta property="og:title" content="acm训练赛-D题解">
+<meta property="og:url" content="http://yoursite.com/2019/07/23/acm训练赛-D题解/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目详情Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of the">
+<meta property="og:description" content="题目详情传送门 This problem is actually a subproblem of problem G from the same contest. There are n candies in a candy box. The type of the i-th candy is ai (1≤ai≤n). You have to prepare a gift using some o">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-23T02:36:38.717Z">
+<meta property="og:updated_time" content="2019-07-23T02:36:08.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="acm训练赛-Computer Game">
-<meta name="twitter:description" content="题目详情Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of the">
+<meta name="twitter:title" content="acm训练赛-D题解">
+<meta name="twitter:description" content="题目详情传送门 This problem is actually a subproblem of problem G from the same contest. There are n candies in a candy box. The type of the i-th candy is ai (1≤ai≤n). You have to prepare a gift using some o">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -155,42 +155,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-acm训练赛-C题解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-acm训练赛-D题解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      acm训练赛-Computer Game
+      acm训练赛-D题解
     </h1>
   
 
         
-        <a href="/2019/07/23/acm训练赛-C题解/" class="archive-article-date">
-  	<time datetime="2019-07-23T00:42:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
+        <a href="/2019/07/23/acm训练赛-D题解/" class="archive-article-date">
+  	<time datetime="2019-07-23T02:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of the game) is k.</p>
-<p>During each turn Vova can choose what to do:</p>
-<p>If the current charge of his laptop battery is strictly greater than a, Vova can just play, and then the charge of his laptop battery will decrease by a;<br>if the current charge of his laptop battery is strictly greater than b (b&lt;a), Vova can play and charge his laptop, and then the charge of his laptop battery will decrease by b;<br>if the current charge of his laptop battery is less than or equal to a and b at the same time then Vova cannot do anything and loses the game.<br>Regardless of Vova’s turns the charge of the laptop battery is always decreases.</p>
-<p>Vova wants to complete the game (Vova can complete the game if after each of n turns the charge of the laptop battery is strictly greater than 0). Vova has to play exactly n turns. Among all possible ways to complete the game, Vova wants to choose the one where the number of turns when he just plays (first type turn) is the maximum possible. It is possible that Vova cannot complete the game at all.</p>
-<p>Your task is to find out the maximum possible number of turns Vova can just play (make the first type turn) or report that Vova cannot complete the game.</p>
+        <h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p><a href="https://vjudge.net/contest/313088#problem/D" target="_blank" rel="noopener">传送门</a></p>
+<p>This problem is actually a subproblem of problem G from the same contest.</p>
+<p>There are n candies in a candy box. The type of the i-th candy is ai (1≤ai≤n).</p>
+<p>You have to prepare a gift using some of these candies with the following restriction: the numbers of candies of each type presented in a gift should be all distinct (i. e. for example, a gift having two candies of type 1 and two candies of type 2 is bad).</p>
+<p>It is possible that multiple types of candies are completely absent from the gift. It is also possible that not all candies of some types will be taken to a gift.</p>
+<p>Your task is to find out the maximum possible size of the single gift you can prepare using the candies you have.</p>
 <p>You have to answer q independent queries.</p>
+<p>If you are Python programmer, consider using PyPy instead of Python when you submit your code.</p>
 <details>
 <summary>展开查看</summary>
 
-<p>Input<br>The first line of the input contains one integer q (1≤q≤105) — the number of queries. Each query is presented by a single line.</p>
-<p>The only line of the query contains four integers k,n,a and b (1≤k,n≤109,1≤b&lt;a≤109) — the initial charge of Vova’s laptop battery, the number of turns in the game and values a and b, correspondingly.</p>
-<p>Output<br>For each query print one integer: -1 if Vova cannot complete the game or the maximum number of turns Vova can just play (make the first type turn) otherwise.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这是一个比较简单的数学问题，我们先根据题目用if语句判断最简单的不能玩电脑的情况。然后在能玩电脑的情况下，先用所有的回合都去待机，然后算出玩与待机之间的电量差，在剩余电量中扣除一点作为备用，剩下的电量转换去玩电脑。最后比较我们算出的次数与要求回合的大小，选小的。(防止溢出)。</p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">long long int k, n, a, b;</span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%lld%lld%lld%lld&quot;, &amp;k, &amp;n, &amp;a, &amp;b);</span><br><span class="line">	if (k&lt;=n*b)  //当要求回合数连待机也不能满足时输出-1 </span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;-1\n&quot;);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	long long int restMax = k - n*b;  </span><br><span class="line">        //先认为所有回合都待机 算出多余的电量 </span><br><span class="line">	long long int r = a - b;       </span><br><span class="line">        //将待机与使用的电量差算出来 </span><br><span class="line">	long long int w = (restMax-1) / r; </span><br><span class="line">        //留一格备用电，其他转化为玩电脑 </span><br><span class="line">	w = min(w, n);              </span><br><span class="line">      //这一句解决了很多问题，w&lt;n时为 w,w &gt;= n时 都为 n 不会越界 </span><br><span class="line">	printf(&quot;%lld\n&quot;, w);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int t;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;t);</span><br><span class="line">	while(t--)</span><br><span class="line">		test();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Input<br>The first line of the input contains one integer q (1≤q≤2⋅105) — the number of queries. Each query is represented by two lines.</p>
+<p>The first line of each query contains one integer n (1≤n≤2⋅105) — the number of candies.</p>
+<p>The second line of each query contains n integers a1,a2,…,an (1≤ai≤n), where ai is the type of the i-th candy in the box.</p>
+<p>It is guaranteed that the sum of n over all queries does not exceed 2⋅105.</p>
+<p>Output<br>For each query print one integer — the maximum possible size of the single gift you can compose using candies you got in this query with the restriction described in the problem statement.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这个题的意思其实就是我有一堆数字(数字可能相同但种类是不同的)，从这堆数字中挑出一些，每类中挑出数字不能相同，算挑出尽量大的数字和是多少。</p>
+<p>先用vector向量计算每类的多少，并从大到小排序。用maxNow记录现在挑选的最大值，并对数据进行判断，如果num[j] &gt;= maxNow,让<br>num[j] = – maxNow ，如果num[j] &lt; maxNow ， maxNow = num[j]。<br>for循环的判断条件中一定要加 maxNow != 0 (这很重要，否则可能答案是负值！！！)。</p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;numeric&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">bool cmp(int x,int y)&#123;</span><br><span class="line">	return x &gt; y; </span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int q;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;q);</span><br><span class="line">	for(int i=0;i&lt;q;i++)&#123;</span><br><span class="line">		int n,j,add=0,maxNow=0;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">		vector&lt;int&gt; num(n);</span><br><span class="line">		for(j=0;j&lt;n;j++)&#123;</span><br><span class="line">			int t;</span><br><span class="line">			scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">			num[--t]++;	</span><br><span class="line">                //用vector数组直接统计每种糖果数量 </span><br><span class="line">		&#125;</span><br><span class="line">		sort(num.begin(),num.end(),cmp);  </span><br><span class="line">                //对统计数据从大到小排序 </span><br><span class="line">		maxNow = num[0];</span><br><span class="line">		for(j=1;j&lt;n &amp;&amp; maxNow!=0;j++)&#123;</span><br><span class="line">			if(num[j] &gt;= maxNow)</span><br><span class="line">				num[j] = --maxNow;</span><br><span class="line">			else</span><br><span class="line">				maxNow = num[j];</span><br><span class="line">		&#125;</span><br><span class="line">		num.erase(num.begin()+j,num.end()); </span><br><span class="line">          //清除函数，将没用到的清理掉 </span><br><span class="line">		add = accumulate(num.begin(),num.end(),0);  </span><br><span class="line">          //累加函数，第三个参数是累加初始值 </span><br><span class="line">		cout &lt;&lt; add &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/king9666/article/details/94048465" target="_blank" rel="noopener">https://blog.csdn.net/king9666/article/details/94048465</a></p>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/ydfy_/article/details/96293260" target="_blank" rel="noopener">https://blog.csdn.net/ydfy_/article/details/96293260</a></p>
+<p><a href="https://blog.csdn.net/djzhao627/article/details/89977411" target="_blank" rel="noopener">https://blog.csdn.net/djzhao627/article/details/89977411</a></p>
 <ul>
 <li>CSDN博客</li>
 </ul>
@@ -228,7 +234,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">一个数学问题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vector</a>
         		</li>
       		
 		</ul>
@@ -284,7 +290,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/23/acm训练赛-C题解/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/23/acm训练赛-D题解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +304,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/23/acm训练赛-D题解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          acm训练赛-D题解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CSU-ACM 2019暑假集训热身赛-F题解</div>
+    <a href="/2019/07/23/acm训练赛-C题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">acm训练赛-Computer Game</div>
       <i class="icon-circle-right"></i>
     </a>
   
