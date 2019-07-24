@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>acm训练赛-E题解 | zgy&#39;s blog</title>
+  <title>CSU-ACM 2019暑假集训热身赛-B题解 | zgy&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="传送门题目详情(Subsequences (easy version))The only difference between the easy and the hard versions is constraints. A subsequence is a string that can be derived from another string by deleting some or no">
-<meta name="keywords" content="bfs set">
+  <meta name="description" content="传送门题目详情A superhero fights with a monster. The battle consists of rounds, each of which lasts exactly n minutes. After a round ends, the next round starts immediately. This is repeated over and over ag">
+<meta name="keywords" content="数学，bfs，内存超限，1700">
 <meta property="og:type" content="article">
-<meta property="og:title" content="acm训练赛-E题解">
-<meta property="og:url" content="http://yoursite.com/2019/07/23/acm训练赛-E题解/index.html">
+<meta property="og:title" content="CSU-ACM 2019暑假集训热身赛-B题解">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/CSU-ACM-2019暑假集训热身赛-B题解/index.html">
 <meta property="og:site_name" content="zgy&#39;s blog">
-<meta property="og:description" content="传送门题目详情(Subsequences (easy version))The only difference between the easy and the hard versions is constraints. A subsequence is a string that can be derived from another string by deleting some or no">
+<meta property="og:description" content="传送门题目详情A superhero fights with a monster. The battle consists of rounds, each of which lasts exactly n minutes. After a round ends, the next round starts immediately. This is repeated over and over ag">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-23T06:33:26.214Z">
+<meta property="og:image" content="http://i2.tiimg.com/694914/78b390fe8bde5d3f.jpg">
+<meta property="og:image" content="http://i2.tiimg.com/694914/bc86070c91f4403f.jpg">
+<meta property="og:updated_time" content="2019-07-24T05:22:27.293Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="acm训练赛-E题解">
-<meta name="twitter:description" content="传送门题目详情(Subsequences (easy version))The only difference between the easy and the hard versions is constraints. A subsequence is a string that can be derived from another string by deleting some or no">
+<meta name="twitter:title" content="CSU-ACM 2019暑假集训热身赛-B题解">
+<meta name="twitter:description" content="传送门题目详情A superhero fights with a monster. The battle consists of rounds, each of which lasts exactly n minutes. After a round ends, the next round starts immediately. This is repeated over and over ag">
+<meta name="twitter:image" content="http://i2.tiimg.com/694914/78b390fe8bde5d3f.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zgy&#39;s blog" type="application/atom+xml">
   
@@ -155,41 +158,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-acm训练赛-E题解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CSU-ACM-2019暑假集训热身赛-B题解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      acm训练赛-E题解
+      CSU-ACM 2019暑假集训热身赛-B题解
     </h1>
   
 
         
-        <a href="/2019/07/23/acm训练赛-E题解/" class="archive-article-date">
-  	<time datetime="2019-07-23T05:15:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
+        <a href="/2019/07/24/CSU-ACM-2019暑假集训热身赛-B题解/" class="archive-article-date">
+  	<time datetime="2019-07-24T03:55:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313088#problem/E" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情-Subsequences-easy-version"><a href="#题目详情-Subsequences-easy-version" class="headerlink" title="题目详情(Subsequences (easy version))"></a>题目详情(Subsequences (easy version))</h1><p>The only difference between the easy and the hard versions is constraints.</p>
-<p>A subsequence is a string that can be derived from another string by deleting some or no symbols without changing the order of the remaining symbols. Characters to be deleted are not required to go successively, there can be any gaps between them. For example, for the string “abaca” the following strings are subsequences: “abaca”, “aba”, “aaa”, “a” and “” (empty string). But the following strings are not subsequences: “aabaca”, “cb” and “bcaa”.</p>
-<p>You are given a string s consisting of n lowercase Latin letters.</p>
-<p>In one move you can take any subsequence t of the given string and add it to the set S. The set S can’t contain duplicates. This move costs n−|t|, where |t| is the length of the added subsequence (i.e. the price equals to the number of the deleted characters).</p>
-<p>Your task is to find out the minimum possible total cost to obtain a set S of size k or report that it is impossible to do so.</p>
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/312927#problem/F" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>A superhero fights with a monster. The battle consists of rounds, each of which lasts exactly n minutes. After a round ends, the next round starts immediately. This is repeated over and over again.</p>
+<p>Each round has the same scenario. It is described by a sequence of n numbers: d1,d2,…,dn (−106≤di≤106). The i-th element means that monster’s hp (hit points) changes by the value di during the i-th minute of each round. Formally, if before the i-th minute of a round the monster’s hp is h, then after the i-th minute it changes to h:=h+di.</p>
+<p>The monster’s initial hp is H. It means that before the battle the monster has H hit points. Print the first minute after which the monster dies. The monster dies if its hp is less than or equal to 0. Print -1 if the battle continues infinitely.</p>
+<p>Input<br>The first line contains two integers H and n (1≤H≤1012, 1≤n≤2⋅105). The second line contains the sequence of integers d1,d2,…,dn (−106≤di≤106), where di is the value to change monster’s hp in the i-th minute of a round.</p>
+<p>Output<br>Print -1 if the superhero can’t kill the monster and the battle will last infinitely. Otherwise, print the positive integer k such that k is the first minute after which the monster is dead.</p>
 <details>
 <summary>展开查看</summary>
 
-<p>Input<br>The first line of the input contains two integers n and k (1≤n,k≤100) — the length of the string and the size of the set, correspondingly.</p>
-<p>The second line of the input contains a string s consisting of n lowercase Latin letters.</p>
-<p>Output<br>Print one integer — if it is impossible to obtain the set S of size k, print -1. Otherwise, print the minimum possible total cost to do it.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>我们利用bfs的广度优先搜索确保我们可以用最小的代价解决问题，利用set容器我们可以进行方便查重。话不多说，上代码。</p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	set&lt;string&gt; st;  //集合可以排除重复 </span><br><span class="line">	queue&lt;string&gt; q; // 实现 bfs</span><br><span class="line">	string s;</span><br><span class="line">	int n,k;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	int ans = 0;</span><br><span class="line">	q.push(s);</span><br><span class="line">	st.insert(s);</span><br><span class="line">	while(!q.empty() &amp;&amp; int(st.size()) &lt; k)&#123;</span><br><span class="line">		string t = q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		for(int i=0;i&lt;int(t.size());i++)&#123;</span><br><span class="line">		//这是为了结合bfs从少至多的遍历所有可能字符串 </span><br><span class="line">			string tmp = t;</span><br><span class="line">			tmp.erase(i,1);  //删除字符 </span><br><span class="line">			if(!st.count(tmp) &amp;&amp; int(st.size())+1 &lt;= k)&#123;</span><br><span class="line">			//判断现有字符串是否重复，长度是否足够 </span><br><span class="line">				q.push(tmp);</span><br><span class="line">				st.insert(tmp);</span><br><span class="line">				ans += n - int(tmp.size()); //计算代价 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(int(st.size()) &lt; k)</span><br><span class="line">		cout &lt;&lt; &quot;-1&quot; &lt;&lt;  endl;</span><br><span class="line">	else</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>我 <del>没有思路</del> 有个不成熟的小想法，看这个题找到了一个 <del>很傻</del> 很强的规律——把他抽象成回文数问题。具体如下：把数字平均分为两份，判断第一份与反过来的第二份相同那么就输出第一份名单所代表的人的编号。<br>主要用的是bfs，本以为会超时，结果居然是超内存！！！。</p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n,i;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	string s1,s2,s3=&quot;&quot;,s4;</span><br><span class="line">	cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">	queue&lt;string&gt; q1,q2,q3,q4;</span><br><span class="line">	q1.push(s1);</span><br><span class="line">	q2.push(s3);</span><br><span class="line">	q3.push(s2);</span><br><span class="line">	for(int i=0;i&lt;n;i++)</span><br><span class="line">		s4 += char(i+1+48);  </span><br><span class="line">		//为了输出人员名单编号 </span><br><span class="line">	q4.push(s4);</span><br><span class="line">	while (!q1.empty())&#123;</span><br><span class="line">	//bfs </span><br><span class="line">		string str = q1.front();</span><br><span class="line">		string rts,s,peo;</span><br><span class="line">		q1.pop();</span><br><span class="line">		rts = q2.front();</span><br><span class="line">		q2.pop();</span><br><span class="line">		s = q3.front();</span><br><span class="line">		q3.pop();</span><br><span class="line">		peo = q4.front();</span><br><span class="line">		q4.pop();</span><br><span class="line">		if(int(str.size()) == n/2)&#123;</span><br><span class="line">		//输出条件判断 </span><br><span class="line">			reverse(rts.begin(),rts.end());</span><br><span class="line">			if(rts == str)&#123;</span><br><span class="line">				for(int j=0;j&lt;int(peo.size());j++)</span><br><span class="line">					cout &lt;&lt; int(peo[j]-48) &lt;&lt; &quot; &quot;;</span><br><span class="line">				return 0;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">				continue;</span><br><span class="line">		&#125;</span><br><span class="line">		else if(int(str.size()) &lt; int(s1.size())/2)</span><br><span class="line">		//剪枝 </span><br><span class="line">			break;</span><br><span class="line">		for(int i=0;i&lt;int(str.size());i++)&#123;</span><br><span class="line">			string lon = str;</span><br><span class="line">			string ss = s;</span><br><span class="line">			string rtss = rts;</span><br><span class="line">			string peop = peo;</span><br><span class="line">			lon.erase(i,1); </span><br><span class="line">			q1.push(lon);  //遍历核心 </span><br><span class="line">			rtss += ss[i];</span><br><span class="line">			q2.push(rtss); //为判断方法制造第二份名单 </span><br><span class="line">			ss.erase(i,1);</span><br><span class="line">			q3.push(ss); //根据人员名单对空闲名单进行管理 </span><br><span class="line">			peop.erase(i,1);</span><br><span class="line">			q4.push(peop); //确定结果名单编号 </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; &quot;-1&quot; &lt;&lt; endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://www.cnblogs.com/yzm10/p/11102020.html" target="_blank" rel="noopener">https://www.cnblogs.com/yzm10/p/11102020.html</a></p>
+<h1 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n;</span><br><span class="line">char c[6000],a[6000];</span><br><span class="line">int cnt[2][2];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	scanf(&quot;%s%s&quot;,c,a);</span><br><span class="line">	for(int i=0;i&lt;n;i++)</span><br><span class="line">		cnt[c[i]-&apos;0&apos;][a[i]-&apos;0&apos;]++;</span><br><span class="line">		//分别统计00,01,10,11的人数 </span><br><span class="line">	//双重循环枚举 a3(10),a4(11) </span><br><span class="line">	for(int a3=0;a3&lt;=cnt[1][0];a3++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int a4=0;a4&lt;=cnt[1][1];a4++)</span><br><span class="line">		&#123;</span><br><span class="line">			int b4=cnt[1][1]-a4;//推出b4 </span><br><span class="line">			int b2=a3+a4-b4;  //推出b2 </span><br><span class="line">			if(b2&lt;0 || b2&gt;cnt[0][1])</span><br><span class="line">				continue;  //初步判断可行性 </span><br><span class="line">			int a2=cnt[0][1]-b2; //推出a2</span><br><span class="line">			int a1=n/2-a2-a3-a4; //推出a1</span><br><span class="line">			if(a1&lt;0 || a1&gt;cnt[0][0]) </span><br><span class="line">				continue;  //初步判断a1可行性 </span><br><span class="line">			for(int i=0;i&lt;n;i++)</span><br><span class="line">			&#123;</span><br><span class="line">				//确定了a1,a2...的组合后遍历查找输出组合所对应人的编号 </span><br><span class="line">				if(a1 &amp;&amp; c[i]==&apos;0&apos; &amp;&amp; a[i]==&apos;0&apos;)printf(&quot;%d &quot;,i+1),a1--;</span><br><span class="line">				if(a2 &amp;&amp; c[i]==&apos;0&apos; &amp;&amp; a[i]==&apos;1&apos;)printf(&quot;%d &quot;,i+1),a2--;</span><br><span class="line">				if(a3 &amp;&amp; c[i]==&apos;1&apos; &amp;&amp; a[i]==&apos;0&apos;)printf(&quot;%d &quot;,i+1),a3--;</span><br><span class="line">				if(a4 &amp;&amp; c[i]==&apos;1&apos; &amp;&amp; a[i]==&apos;1&apos;)printf(&quot;%d &quot;,i+1),a4--;</span><br><span class="line">			&#125;</span><br><span class="line">			puts(&quot;&quot;);</span><br><span class="line">			exit(0);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	puts(&quot;-1&quot;);</span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://i2.tiimg.com/694914/78b390fe8bde5d3f.jpg" alt="Markdown"></p>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/wen_yongqi/article/details/88385862" target="_blank" rel="noopener">https://blog.csdn.net/wen_yongqi/article/details/88385862</a></p>
+<p><img src="http://i2.tiimg.com/694914/bc86070c91f4403f.jpg" alt="Markdown"></p>
 </details>
       
 
@@ -224,7 +228,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bfs set</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">数学，bfs，内存超限，1700</a>
         		</li>
       		
 		</ul>
@@ -280,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/23/acm训练赛-E题解/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/24/CSU-ACM-2019暑假集训热身赛-B题解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,18 +298,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/23/写了这么多题解再来写写错误演示/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          写了这么多题解再来写写错误演示
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/23/acm训练赛-D题解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">acm训练赛-D题解</div>
+    <a href="/2019/07/23/经过无数遍的修改终于AC了！！！/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">经过无数遍的修改终于AC了！！！</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -333,7 +328,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="acm训练赛-E题解" data-title="acm训练赛-E题解" data-url="http://yoursite.com/2019/07/23/acm训练赛-E题解/"></div>
+	<div class="ds-thread" data-thread-key="CSU-ACM-2019暑假集训热身赛-B题解" data-title="CSU-ACM 2019暑假集训热身赛-B题解" data-url="http://yoursite.com/2019/07/24/CSU-ACM-2019暑假集训热身赛-B题解/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
