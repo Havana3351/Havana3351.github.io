@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="zgy&#39;s blog">
 <meta property="og:description" content="一遍就A真开心传送门题目详情The only difference between problems C1 and C2 is that all values in input of problem C1 are distinct (this condition may be false for problem C2). You are given a sequence a consisting">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-24T12:32:49.134Z">
+<meta property="og:updated_time" content="2019-07-24T12:36:24.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ACM训练赛2-C">
 <meta name="twitter:description" content="一遍就A真开心传送门题目详情The only difference between problems C1 and C2 is that all values in input of problem C1 are distinct (this condition may be false for problem C2). You are given a sequence a consisting">
@@ -178,6 +178,9 @@
 <p>You are given a sequence a consisting of n integers. All these integers are distinct, each value from 1 to n appears in the sequence exactly once.</p>
 <p>You are making a sequence of moves. During each move you must take either the leftmost element of the sequence or the rightmost element of the sequence, write it down and remove it from the sequence. Your task is to write down a strictly increasing sequence, and among all such sequences you should take the longest (the length of the sequence is the number of elements in it).</p>
 <p>For example, for the sequence [2,1,5,4,3] the answer is 4 (you take 2 and the sequence becomes [1,5,4,3], then you take the rightmost element 3 and the sequence becomes [1,5,4], then you take 4 and the sequence becomes [1,5] and then you take 5 and the sequence becomes [1], the obtained increasing sequence is [2,3,4,5]).</p>
+<details>
+<summary>展开查看</summary>
+
 <p>Input<br>The first line of the input contains one integer n (1≤n≤2⋅105) — the number of elements in a.</p>
 <p>The second line of the input contains n integers a1,a2,…,an (1≤ai≤n), where ai is the i-th element of a. All these integers are pairwise distinct.</p>
 <p>Output<br>In the first line of the output print k — the maximum number of elements in a strictly increasing sequence you can obtain.</p>
@@ -185,7 +188,7 @@
 <h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;deque&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n,b,min=0,ans=0;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	deque&lt;int&gt; dq;</span><br><span class="line">	deque&lt;char&gt; pri;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		dq.push_back(b);</span><br><span class="line">	&#125;</span><br><span class="line">	while(!dq.empty())&#123;</span><br><span class="line">		if(dq.front() &gt; min &amp;&amp; dq.back() &gt; min)&#123;</span><br><span class="line">			if(dq.front() &gt; dq.back())&#123;</span><br><span class="line">				min = dq.back();</span><br><span class="line">				dq.pop_back();</span><br><span class="line">				pri.push_back(&apos;R&apos;);</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				min = dq.front();</span><br><span class="line">				dq.pop_front();</span><br><span class="line">				pri.push_back(&apos;L&apos;);</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">		else if(dq.front() &gt; min)&#123;</span><br><span class="line">			min = dq.front();</span><br><span class="line">			dq.pop_front();</span><br><span class="line">			pri.push_back(&apos;L&apos;);</span><br><span class="line">			ans++;</span><br><span class="line">		&#125;</span><br><span class="line">		else if(dq.back() &gt; min)&#123;</span><br><span class="line">			min = dq.back();</span><br><span class="line">			dq.pop_back();</span><br><span class="line">			pri.push_back(&apos;R&apos;);</span><br><span class="line">			ans++;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			break;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">	while(!pri.empty())&#123;</span><br><span class="line">		cout &lt;&lt; pri.front();</span><br><span class="line">		pri.pop_front();</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/caicai_zju/article/details/49227927" target="_blank" rel="noopener">https://blog.csdn.net/caicai_zju/article/details/49227927</a><br><a href="https://www.cnblogs.com/boruto/p/9562526.html" target="_blank" rel="noopener">https://www.cnblogs.com/boruto/p/9562526.html</a></p>
-
+</details>
       
 
       
@@ -446,11 +449,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
+                <a href="javascript:void(0)" class="js-tag color2">vector</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vector</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
