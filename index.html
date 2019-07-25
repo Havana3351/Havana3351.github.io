@@ -152,6 +152,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ACM训练赛2-D题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/25/ACM训练赛2-D题解/">ACM训练赛2-D题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/25/ACM训练赛2-D题解/" class="archive-article-date">
+  	<time datetime="2019-07-25T04:09:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313957#problem/D" target="_blank" rel="noopener">传送门</a></h1><h1 id="相关博客"><a href="#相关博客" class="headerlink" title="相关博客"></a><a href="http://www.zgyhjr.top/2019/07/24/ACM%E8%AE%AD%E7%BB%83%E8%B5%9B2-C/" target="_blank" rel="noopener">相关博客</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>本题是C题的升级版。唯一的区别就是数据中会有出现队头队尾相等，但选择不同会导致结果不同的“模糊”数据出现。</p>
+<p><img src="http://i1.fuimg.com/694914/ad6f9043a76d3aa4.jpg" alt="Markdown"></p>
+<p>#解题思路</p>
+<blockquote>
+<p>其实就是特判一下相等的情况，然后对选左选右都模拟一下，选长的那个。</p>
+</blockquote>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">deque&lt;int&gt;q,qt; </span><br><span class="line">string a1;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	int a;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a);</span><br><span class="line">		q.push_back(a);</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;int&gt; v;</span><br><span class="line">	int t=0;</span><br><span class="line">	while(!q.empty())&#123;</span><br><span class="line">	if(q.front()&gt;t &amp;&amp; q.back()&gt;t)&#123;</span><br><span class="line">		if(q.front()==q.back())&#123;  //特判队首队尾相等的情况</span><br><span class="line">			int num1=0;</span><br><span class="line">			int num2=0;</span><br><span class="line">			int t1=t;  //防止模拟时改变数据 </span><br><span class="line">			qt = q;    //用个临时队列qt，进行模拟 </span><br><span class="line">			while(!qt.empty())&#123;  </span><br><span class="line">				if(qt.front() &gt; t1)&#123;  //先模拟走左边 </span><br><span class="line">				    num1++;</span><br><span class="line">					t1=qt.front();</span><br><span class="line">					qt.pop_front();</span><br><span class="line">				&#125;</span><br><span class="line">				else </span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			qt.clear();  //清空</span><br><span class="line">			qt = q;</span><br><span class="line">			t1=t;</span><br><span class="line">			while(!qt.empty())&#123;  //模拟右边 </span><br><span class="line">				if(qt.back() &gt; t1)&#123;</span><br><span class="line">					num2++;</span><br><span class="line">					t1=qt.back();</span><br><span class="line">					qt.pop_back();</span><br><span class="line">				&#125;</span><br><span class="line">				else </span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			qt.clear();</span><br><span class="line">			if(num1 &gt; num2)&#123;   //比较哪个更长,走更长的那一条路 </span><br><span class="line">				while(num1--)&#123;</span><br><span class="line">					v.push_back(q.front());  </span><br><span class="line">                                        //用来最后输出长度 </span><br><span class="line">					a1 += &quot;L&quot;;</span><br><span class="line">					t = q.front();</span><br><span class="line">					q.pop_front();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				while(num2--)&#123;</span><br><span class="line">					v.push_back(q.back());</span><br><span class="line">					a1 += &quot;R&quot;;</span><br><span class="line">					t = q.back();</span><br><span class="line">					q.pop_back();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">		else if(q.front() &lt; q.back())&#123;</span><br><span class="line">			v.push_back(q.front());</span><br><span class="line">			a1+=&quot;L&quot;;</span><br><span class="line">			t=q.front();</span><br><span class="line">			q.pop_front();</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			v.push_back(q.back());</span><br><span class="line">			a1+=&quot;R&quot;;</span><br><span class="line">			t=q.back();</span><br><span class="line">			q.pop_back();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	else if(q.back() &gt; t)&#123;</span><br><span class="line">		v.push_back(q.back());</span><br><span class="line">		a1+=&quot;R&quot;;</span><br><span class="line">		t=q.back();</span><br><span class="line">		q.pop_back();</span><br><span class="line">	&#125;</span><br><span class="line">	else  if(q.front() &gt; t)&#123;</span><br><span class="line">		v.push_back(q.front());</span><br><span class="line">		a1+=&quot;L&quot;;</span><br><span class="line">		t=q.front(); </span><br><span class="line">		q.pop_front();</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	  break;</span><br><span class="line">	&#125;</span><br><span class="line">	int len = 1;</span><br><span class="line">	cout &lt;&lt; v.size() &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; a1 &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/zjyang12345/article/details/89604682" target="_blank" rel="noopener">https://blog.csdn.net/zjyang12345/article/details/89604682</a></p>
+<p><img src="http://i2.tiimg.com/694914/10d877f80a08a128.jpg" alt="Markdown"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">双端队列</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/25/ACM训练赛2-D题解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ACM训练赛2-C" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -999,83 +1086,6 @@
 
 
   
-    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/18/我的第一篇博客/">我的第一篇博客</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/18/我的第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-17T16:18:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>   第一次写博客，有点激动，不知道写点啥。</p>
-<p>   我是一名即将上大二的新疆大学的软件工程专业学生。</p>
-<p>   暑假的时候突然想做一个自己的静态博客。就用hexo搭建了一个。</p>
-<p>   平时写markdown的话用的是vscode，还不错。</p>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>   以后写点什么？？？</p>
-<p>   这个问题不算太难说：</p>
-<ol>
-<li>自我介绍</li>
-<li>学习心得</li>
-<li>技术交流</li>
-<li>生活趣事</li>
-</ol>
-<hr>
-<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>   感谢大家看我的博客，以及对我博客的支持。</p>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/18/我的第一篇博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1173,7 +1183,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学问题</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">二分统计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1189,19 +1211,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">二分统计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vector</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">set</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,10 +1236,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">暴力推演</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
             
             <div class="clearfix"></div>
