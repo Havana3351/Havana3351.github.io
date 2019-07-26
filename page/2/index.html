@@ -152,6 +152,197 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ACM训练赛2-B题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/24/ACM训练赛2-B题解/">ACM训练赛2-B题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/24/ACM训练赛2-B题解/" class="archive-article-date">
+  	<time datetime="2019-07-24T11:00:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313957#problem/B" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given a long decimal number a consisting of n digits from 1 to 9. You also have a function f that maps every digit from 1 to 9 to some (possibly the same) digit from 1 to 9.</p>
+<p>You can perform the following operation no more than once: choose a non-empty contiguous subsegment of digits in a, and replace each digit x from this segment with f(x). For example, if a=1337, f(1)=1, f(3)=5, f(7)=3, and you choose the segment consisting of three rightmost digits, you get 1553 as the result.</p>
+<p>What is the maximum possible number you can obtain applying this operation no more than once?</p>
+<details>
+<summary>展开查看</summary>
+
+<p>Input<br>The first line contains one integer n (1≤n≤2⋅105) — the number of digits in a.</p>
+<p>The second line contains a string of n characters, denoting the number a. Each character is a decimal digit from 1 to 9.</p>
+<p>The third line contains exactly 9 integers f(1), f(2), …, f(9) (1≤f(i)≤9).</p>
+<p>Output<br>Print the maximum number you can get after applying the operation described in the statement no more than once.</p>
+<h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p>这道题当时没太看懂，吃了不能理解题意的亏。</p>
+<blockquote>
+<p>可以从数字串的某一个位置开始替换一段字串f(xi)，不能超过一次，要替换出最大的数。<br>解题思路：先找出一个可以换的位置，然后继续向后遍历，直到这一位数字换掉会变小，<br>退出循环，输出答案！！</p>
+</blockquote>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	string num;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; num;</span><br><span class="line">	char t[11];</span><br><span class="line">	for(int i=1;i&lt;10;i++)</span><br><span class="line">		cin &gt;&gt; t[i];</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		if(t[num[i]-&apos;0&apos;] &gt; num[i])&#123;</span><br><span class="line">			int j = i;</span><br><span class="line">			while(t[num[j]-&apos;0&apos;] &gt;= num[j])&#123;</span><br><span class="line">				num[j] = t[num[j]-&apos;0&apos;];</span><br><span class="line">				j++;</span><br><span class="line">			&#125;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/miranda_ymz/article/details/89741099" target="_blank" rel="noopener">https://blog.csdn.net/miranda_ymz/article/details/89741099</a></p>
+<p><img src="http://i2.tiimg.com/694914/bc86070c91f4403f.jpg" alt="Markdown"></p>
+</details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学问题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/24/ACM训练赛2-B题解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CSU-ACM-2019暑假集训热身赛-B题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/24/CSU-ACM-2019暑假集训热身赛-B题解/">CSU-ACM 2019暑假集训热身赛-B题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/24/CSU-ACM-2019暑假集训热身赛-B题解/" class="archive-article-date">
+  	<time datetime="2019-07-24T03:55:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/312927#problem/F" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>Polycarp is a head of a circus troupe. There are n — an even number — artists in the troupe. It is known whether the i-th artist can perform as a clown (if yes, then ci=1, otherwise ci=0), and whether they can perform as an acrobat (if yes, then ai=1, otherwise ai=0).</p>
+<p>Split the artists into two performances in such a way that:</p>
+<p>each artist plays in exactly one performance,<br>the number of artists in the two performances is equal (i.e. equal to n2),<br>the number of artists that can perform as clowns in the first performance is the same as the number of artists that can perform as acrobats in the second performance.<br>Input<br>The first line contains a single integer n (2≤n≤5000, n is even) — the number of artists in the troupe.</p>
+<p>The second line contains n digits c1c2…cn, the i-th of which is equal to 1 if the i-th artist can perform as a clown, and 0 otherwise.</p>
+<p>The third line contains n digits a1a2…an, the i-th of which is equal to 1, if the i-th artist can perform as an acrobat, and 0 otherwise.</p>
+<p>Output<br>Print n2 distinct integers — the indices of the artists that should play in the first performance.</p>
+<p>If there are multiple answers, print any.</p>
+<p>If there is no solution, print a single integer −1.</p>
+<details>
+<summary>展开查看</summary>
+
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>我 <del>没有思路</del> 有个不成熟的小想法，看这个题找到了一个 <del>很傻</del> 很强的规律——把他抽象成回文数问题。具体如下：把数字平均分为两份，判断第一份与反过来的第二份相同那么就输出第一份名单所代表的人的编号。<br>主要用的是bfs，本以为会超时，结果居然是超内存！！！。</p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n,i;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	string s1,s2,s3=&quot;&quot;,s4;</span><br><span class="line">	cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">	queue&lt;string&gt; q1,q2,q3,q4;</span><br><span class="line">	q1.push(s1);</span><br><span class="line">	q2.push(s3);</span><br><span class="line">	q3.push(s2);</span><br><span class="line">	for(int i=0;i&lt;n;i++)</span><br><span class="line">		s4 += char(i+1+48);  </span><br><span class="line">		//为了输出人员名单编号 </span><br><span class="line">	q4.push(s4);</span><br><span class="line">	while (!q1.empty())&#123;</span><br><span class="line">	//bfs </span><br><span class="line">		string str = q1.front();</span><br><span class="line">		string rts,s,peo;</span><br><span class="line">		q1.pop();</span><br><span class="line">		rts = q2.front();</span><br><span class="line">		q2.pop();</span><br><span class="line">		s = q3.front();</span><br><span class="line">		q3.pop();</span><br><span class="line">		peo = q4.front();</span><br><span class="line">		q4.pop();</span><br><span class="line">		if(int(str.size()) == n/2)&#123;</span><br><span class="line">		//输出条件判断 </span><br><span class="line">			reverse(rts.begin(),rts.end());</span><br><span class="line">			if(rts == str)&#123;</span><br><span class="line">				for(int j=0;j&lt;int(peo.size());j++)</span><br><span class="line">					cout &lt;&lt; int(peo[j]-48) &lt;&lt; &quot; &quot;;</span><br><span class="line">				return 0;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">				continue;</span><br><span class="line">		&#125;</span><br><span class="line">		else if(int(str.size()) &lt; int(s1.size())/2)</span><br><span class="line">		//剪枝 </span><br><span class="line">			break;</span><br><span class="line">		for(int i=0;i&lt;int(str.size());i++)&#123;</span><br><span class="line">			string lon = str;</span><br><span class="line">			string ss = s;</span><br><span class="line">			string rtss = rts;</span><br><span class="line">			string peop = peo;</span><br><span class="line">			lon.erase(i,1); </span><br><span class="line">			q1.push(lon);  //遍历核心 </span><br><span class="line">			rtss += ss[i];</span><br><span class="line">			q2.push(rtss); //为判断方法制造第二份名单 </span><br><span class="line">			ss.erase(i,1);</span><br><span class="line">			q3.push(ss); //根据人员名单对空闲名单进行管理 </span><br><span class="line">			peop.erase(i,1);</span><br><span class="line">			q4.push(peop); //确定结果名单编号 </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; &quot;-1&quot; &lt;&lt; endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n;</span><br><span class="line">char c[6000],a[6000];</span><br><span class="line">int cnt[2][2];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	scanf(&quot;%s%s&quot;,c,a);</span><br><span class="line">	for(int i=0;i&lt;n;i++)</span><br><span class="line">		cnt[c[i]-&apos;0&apos;][a[i]-&apos;0&apos;]++;</span><br><span class="line">		//分别统计00,01,10,11的人数 </span><br><span class="line">	//双重循环枚举 a3(10),a4(11) </span><br><span class="line">	for(int a3=0;a3&lt;=cnt[1][0];a3++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int a4=0;a4&lt;=cnt[1][1];a4++)</span><br><span class="line">		&#123;</span><br><span class="line">			int b4=cnt[1][1]-a4;//推出b4 </span><br><span class="line">			int b2=a3+a4-b4;  //推出b2 </span><br><span class="line">			if(b2&lt;0 || b2&gt;cnt[0][1])</span><br><span class="line">				continue;  //初步判断可行性 </span><br><span class="line">			int a2=cnt[0][1]-b2; //推出a2</span><br><span class="line">			int a1=n/2-a2-a3-a4; //推出a1</span><br><span class="line">			if(a1&lt;0 || a1&gt;cnt[0][0]) </span><br><span class="line">				continue;  //初步判断a1可行性 </span><br><span class="line">			for(int i=0;i&lt;n;i++)</span><br><span class="line">			&#123;</span><br><span class="line">				//确定了a1,a2...的组合后遍历查找输出组合所对应人的编号 </span><br><span class="line">				if(a1 &amp;&amp; c[i]==&apos;0&apos; &amp;&amp; a[i]==&apos;0&apos;)printf(&quot;%d &quot;,i+1),a1--;</span><br><span class="line">				if(a2 &amp;&amp; c[i]==&apos;0&apos; &amp;&amp; a[i]==&apos;1&apos;)printf(&quot;%d &quot;,i+1),a2--;</span><br><span class="line">				if(a3 &amp;&amp; c[i]==&apos;1&apos; &amp;&amp; a[i]==&apos;0&apos;)printf(&quot;%d &quot;,i+1),a3--;</span><br><span class="line">				if(a4 &amp;&amp; c[i]==&apos;1&apos; &amp;&amp; a[i]==&apos;1&apos;)printf(&quot;%d &quot;,i+1),a4--;</span><br><span class="line">			&#125;</span><br><span class="line">			puts(&quot;&quot;);</span><br><span class="line">			exit(0);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	puts(&quot;-1&quot;);</span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://i2.tiimg.com/694914/78b390fe8bde5d3f.jpg" alt="Markdown"></p>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/wen_yongqi/article/details/88385862" target="_blank" rel="noopener">https://blog.csdn.net/wen_yongqi/article/details/88385862</a></p>
+<p><img src="http://i2.tiimg.com/694914/bc86070c91f4403f.jpg" alt="Markdown"></p>
+</details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存超限</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/24/CSU-ACM-2019暑假集训热身赛-B题解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-经过无数遍的修改终于AC了！！！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -197,11 +388,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">暴力</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">暴力</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
         		</li>
       		
 		</ul>
@@ -1009,6 +1200,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">二分统计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
@@ -1021,23 +1224,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">二分统计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1058,10 +1253,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">暴力推演</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
             
             <div class="clearfix"></div>
