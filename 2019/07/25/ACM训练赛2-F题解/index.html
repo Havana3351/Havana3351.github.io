@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>acm训练赛-D题解 | zgy&#39;s blog</title>
+  <title>ACM训练赛2-F题解 | zgy&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="传送门题目详情This problem is actually a subproblem of problem G from the same contest. There are n candies in a candy box. The type of the i-th candy is ai (1≤ai≤n). You have to prepare a gift using some of">
-<meta name="keywords" content="vector">
+  <meta name="description" content="传送门题目详情You are given two arrays a and b, both of length n. All elements of both arrays are from 0 to n−1. You can reorder elements of the array b (if you want, you may leave the order of elements as i">
+<meta name="keywords" content="multiset,贪心">
 <meta property="og:type" content="article">
-<meta property="og:title" content="acm训练赛-D题解">
-<meta property="og:url" content="http://yoursite.com/2019/07/23/acm训练赛-D题解/index.html">
+<meta property="og:title" content="ACM训练赛2-F题解">
+<meta property="og:url" content="http://yoursite.com/2019/07/25/ACM训练赛2-F题解/index.html">
 <meta property="og:site_name" content="zgy&#39;s blog">
-<meta property="og:description" content="传送门题目详情This problem is actually a subproblem of problem G from the same contest. There are n candies in a candy box. The type of the i-th candy is ai (1≤ai≤n). You have to prepare a gift using some of">
+<meta property="og:description" content="传送门题目详情You are given two arrays a and b, both of length n. All elements of both arrays are from 0 to n−1. You can reorder elements of the array b (if you want, you may leave the order of elements as i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-24T12:30:10.443Z">
+<meta property="og:image" content="http://i1.fuimg.com/694914/74c27293faf87e39.jpg">
+<meta property="og:updated_time" content="2019-07-26T02:55:45.899Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="acm训练赛-D题解">
-<meta name="twitter:description" content="传送门题目详情This problem is actually a subproblem of problem G from the same contest. There are n candies in a candy box. The type of the i-th candy is ai (1≤ai≤n). You have to prepare a gift using some of">
+<meta name="twitter:title" content="ACM训练赛2-F题解">
+<meta name="twitter:description" content="传送门题目详情You are given two arrays a and b, both of length n. All elements of both arrays are from 0 to n−1. You can reorder elements of the array b (if you want, you may leave the order of elements as i">
+<meta name="twitter:image" content="http://i1.fuimg.com/694914/74c27293faf87e39.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zgy&#39;s blog" type="application/atom+xml">
   
@@ -155,50 +157,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-acm训练赛-D题解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ACM训练赛2-F题解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      acm训练赛-D题解
+      ACM训练赛2-F题解
     </h1>
   
 
         
-        <a href="/2019/07/23/acm训练赛-D题解/" class="archive-article-date">
-  	<time datetime="2019-07-23T02:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
+        <a href="/2019/07/25/ACM训练赛2-F题解/" class="archive-article-date">
+  	<time datetime="2019-07-25T12:19:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313088#problem/D" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>This problem is actually a subproblem of problem G from the same contest.</p>
-<p>There are n candies in a candy box. The type of the i-th candy is ai (1≤ai≤n).</p>
-<p>You have to prepare a gift using some of these candies with the following restriction: the numbers of candies of each type presented in a gift should be all distinct (i. e. for example, a gift having two candies of type 1 and two candies of type 2 is bad).</p>
-<p>It is possible that multiple types of candies are completely absent from the gift. It is also possible that not all candies of some types will be taken to a gift.</p>
-<p>Your task is to find out the maximum possible size of the single gift you can prepare using the candies you have.</p>
-<p>You have to answer q independent queries.</p>
-<p>If you are Python programmer, consider using PyPy instead of Python when you submit your code.</p>
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313957#problem/F" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given two arrays a and b, both of length n. All elements of both arrays are from 0 to n−1.</p>
+<p>You can reorder elements of the array b (if you want, you may leave the order of elements as it is). After that, let array c be the array of length n, the i-th element of this array is ci=(ai+bi)%n, where x%y is x modulo y.</p>
+<p>Your task is to reorder elements of the array b to obtain the lexicographically minimum possible array c.</p>
+<p>Array x of length n is lexicographically less than array y of length n, if there exists such i (1≤i≤n), that xi&lt;yi, and for any j (1≤j&lt;i) xj=yj.</p>
 <details>
 <summary>展开查看</summary>
 
-<p>Input<br>The first line of the input contains one integer q (1≤q≤2⋅105) — the number of queries. Each query is represented by two lines.</p>
-<p>The first line of each query contains one integer n (1≤n≤2⋅105) — the number of candies.</p>
-<p>The second line of each query contains n integers a1,a2,…,an (1≤ai≤n), where ai is the type of the i-th candy in the box.</p>
-<p>It is guaranteed that the sum of n over all queries does not exceed 2⋅105.</p>
-<p>Output<br>For each query print one integer — the maximum possible size of the single gift you can compose using candies you got in this query with the restriction described in the problem statement.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这个题的意思其实就是我有一堆数字(数字可能相同但种类是不同的)，从这堆数字中挑出一些，每类中挑出数字不能相同，算挑出尽量大的数字和是多少。</p>
-<p>先用vector向量计算每类的多少，并从大到小排序。用maxNow记录现在挑选的最大值，并对数据进行判断，如果num[j] &gt;= maxNow,让<br>num[j] = – maxNow ，如果num[j] &lt; maxNow ， maxNow = num[j]。<br>for循环的判断条件中一定要加 maxNow != 0 (这很重要，否则可能答案是负值！！！)。</p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;numeric&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">bool cmp(int x,int y)&#123;</span><br><span class="line">	return x &gt; y; </span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int q;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;q);</span><br><span class="line">	for(int i=0;i&lt;q;i++)&#123;</span><br><span class="line">		int n,j,add=0,maxNow=0;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">		vector&lt;int&gt; num(n);</span><br><span class="line">		for(j=0;j&lt;n;j++)&#123;</span><br><span class="line">			int t;</span><br><span class="line">			scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">			num[--t]++;	</span><br><span class="line">                //用vector数组直接统计每种糖果数量 </span><br><span class="line">		&#125;</span><br><span class="line">		sort(num.begin(),num.end(),cmp);  </span><br><span class="line">                //对统计数据从大到小排序 </span><br><span class="line">		maxNow = num[0];</span><br><span class="line">		for(j=1;j&lt;n &amp;&amp; maxNow!=0;j++)&#123;</span><br><span class="line">			if(num[j] &gt;= maxNow)</span><br><span class="line">				num[j] = --maxNow;</span><br><span class="line">			else</span><br><span class="line">				maxNow = num[j];</span><br><span class="line">		&#125;</span><br><span class="line">		num.erase(num.begin()+j,num.end()); </span><br><span class="line">          //清除函数，将没用到的清理掉 </span><br><span class="line">		add = accumulate(num.begin(),num.end(),0);  </span><br><span class="line">          //累加函数，第三个参数是累加初始值 </span><br><span class="line">		cout &lt;&lt; add &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Input<br>The first line of the input contains one integer n (1≤n≤2⋅105) — the number of elements in a, b and c.</p>
+<p>The second line of the input contains n integers a1,a2,…,an (0≤ai&lt;n), where ai is the i-th element of a.</p>
+<p>The third line of the input contains n integers b1,b2,…,bn (0≤bi&lt;n), where bi is the i-th element of b.</p>
+<p>Output<br>Print the lexicographically minimum possible array c. Recall that your task is to reorder elements of the array b and obtain the lexicographically minimum possible array c, where the i-th element of c is ci=(ai+bi)%n.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
+<p>因为要求ai+bi % n为字典序，所以就要求取余后尽可能的小，所以先在b中找n-ai，如果没有找第一个比它大的数。<del>我也不知道为啥要找大的，这是个数学问题</del></p>
+</blockquote>
+<p><img src="http://i1.fuimg.com/694914/74c27293faf87e39.jpg" alt="Markdown"></p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn = 200010;</span><br><span class="line">vector&lt;int&gt; v;</span><br><span class="line">multiset&lt;int&gt; st;</span><br><span class="line">int a[maxn];</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		v.push_back(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		st.insert(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		auto u = st.lower_bound(n-v[i]);</span><br><span class="line">		//利用二分查找返回第一个大于等于参数的位置</span><br><span class="line">		if(u == st.end())</span><br><span class="line">			u = st.begin();</span><br><span class="line">		a[i] = (*u+v[i]) % n;</span><br><span class="line">		st.erase(u); </span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		if(i == 0)</span><br><span class="line">			cout &lt;&lt; a[0];</span><br><span class="line">		else</span><br><span class="line">			cout &lt;&lt; &quot; &quot; &lt;&lt; a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/ydfy_/article/details/96293260" target="_blank" rel="noopener">https://blog.csdn.net/ydfy_/article/details/96293260</a></p>
-<p><a href="https://blog.csdn.net/djzhao627/article/details/89977411" target="_blank" rel="noopener">https://blog.csdn.net/djzhao627/article/details/89977411</a></p>
-<ul>
-<li>CSDN博客</li>
-</ul>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://www.cnblogs.com/letlifestop/p/10924177.html" target="_blank" rel="noopener">https://www.cnblogs.com/letlifestop/p/10924177.html</a></p>
 </details>
       
 
@@ -238,7 +234,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vector</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">multiset</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
         		</li>
       		
 		</ul>
@@ -294,7 +294,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/23/acm训练赛-D题解/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/25/ACM训练赛2-F题解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,18 +308,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/23/acm训练赛-E题解/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/26/C-Array-Splitting-题解/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          acm训练赛-E题解
+          C. Array Splitting-题解
         
       </div>
     </a>
   
   
-    <a href="/2019/07/23/acm训练赛-C题解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">acm训练赛-Computer Game</div>
+    <a href="/2019/07/25/先记住这个题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">先记住这个题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -350,8 +350,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2019/07/23/acm训练赛-D题解/", 
-    sourceId: "acm训练赛-D题解",
+    url: "http://yoursite.com/2019/07/25/ACM训练赛2-F题解/", 
+    sourceId: "ACM训练赛2-F题解",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
