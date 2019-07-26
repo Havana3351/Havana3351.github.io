@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>acm训练赛-Computer Game | zgy&#39;s blog</title>
+  <title>Java 学习清单 | zgy&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="传送门题目详情Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of">
-<meta name="keywords" content="数学问题">
+  <meta name="description" content="Java自学指南基础知识 语言学习与了解（Java） 基本算法 基本网络知识：TCP/IP HTTP/HTTPS 基本设计模式   不用特别去看，用什么看什么">
+<meta name="keywords" content="学习清单,Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="acm训练赛-Computer Game">
-<meta property="og:url" content="http://yoursite.com/2019/07/23/acm训练赛-C题解/index.html">
+<meta property="og:title" content="Java 学习清单">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/Java-学习清单/index.html">
 <meta property="og:site_name" content="zgy&#39;s blog">
-<meta property="og:description" content="传送门题目详情Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of">
+<meta property="og:description" content="Java自学指南基础知识 语言学习与了解（Java） 基本算法 基本网络知识：TCP/IP HTTP/HTTPS 基本设计模式   不用特别去看，用什么看什么">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-24T12:30:02.149Z">
+<meta property="og:updated_time" content="2019-07-26T07:19:36.320Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="acm训练赛-Computer Game">
-<meta name="twitter:description" content="传送门题目详情Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of">
+<meta name="twitter:title" content="Java 学习清单">
+<meta name="twitter:description" content="Java自学指南基础知识 语言学习与了解（Java） 基本算法 基本网络知识：TCP/IP HTTP/HTTPS 基本设计模式   不用特别去看，用什么看什么">
   
     <link rel="alternative" href="/atom.xml" title="zgy&#39;s blog" type="application/atom+xml">
   
@@ -155,46 +155,83 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-acm训练赛-C题解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java-学习清单" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      acm训练赛-Computer Game
+      Java 学习清单
     </h1>
   
 
         
-        <a href="/2019/07/23/acm训练赛-C题解/" class="archive-article-date">
-  	<time datetime="2019-07-23T00:42:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
+        <a href="/2019/07/26/Java-学习清单/" class="archive-article-date">
+  	<time datetime="2019-07-26T05:43:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313088#problem/C" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of the game) is k.</p>
-<p>During each turn Vova can choose what to do:</p>
-<p>If the current charge of his laptop battery is strictly greater than a, Vova can just play, and then the charge of his laptop battery will decrease by a;<br>if the current charge of his laptop battery is strictly greater than b (b&lt;a), Vova can play and charge his laptop, and then the charge of his laptop battery will decrease by b;<br>if the current charge of his laptop battery is less than or equal to a and b at the same time then Vova cannot do anything and loses the game.<br>Regardless of Vova’s turns the charge of the laptop battery is always decreases.</p>
-<p>Vova wants to complete the game (Vova can complete the game if after each of n turns the charge of the laptop battery is strictly greater than 0). Vova has to play exactly n turns. Among all possible ways to complete the game, Vova wants to choose the one where the number of turns when he just plays (first type turn) is the maximum possible. It is possible that Vova cannot complete the game at all.</p>
-<p>Your task is to find out the maximum possible number of turns Vova can just play (make the first type turn) or report that Vova cannot complete the game.</p>
-<p>You have to answer q independent queries.</p>
-<details>
-<summary>展开查看</summary>
-
-<p>Input<br>The first line of the input contains one integer q (1≤q≤105) — the number of queries. Each query is presented by a single line.</p>
-<p>The only line of the query contains four integers k,n,a and b (1≤k,n≤109,1≤b&lt;a≤109) — the initial charge of Vova’s laptop battery, the number of turns in the game and values a and b, correspondingly.</p>
-<p>Output<br>For each query print one integer: -1 if Vova cannot complete the game or the maximum number of turns Vova can just play (make the first type turn) otherwise.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这是一个比较简单的数学问题，我们先根据题目用if语句判断最简单的不能玩电脑的情况。然后在能玩电脑的情况下，先用所有的回合都去待机，然后算出玩与待机之间的电量差，在剩余电量中扣除一点作为备用，剩下的电量转换去玩电脑。最后比较我们算出的次数与要求回合的大小，选小的。(防止溢出)。</p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">long long int k, n, a, b;</span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%lld%lld%lld%lld&quot;, &amp;k, &amp;n, &amp;a, &amp;b);</span><br><span class="line">	if (k&lt;=n*b)  //当要求回合数连待机也不能满足时输出-1 </span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;-1\n&quot;);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	long long int restMax = k - n*b;  </span><br><span class="line">        //先认为所有回合都待机 算出多余的电量 </span><br><span class="line">	long long int r = a - b;       </span><br><span class="line">        //将待机与使用的电量差算出来 </span><br><span class="line">	long long int w = (restMax-1) / r; </span><br><span class="line">        //留一格备用电，其他转化为玩电脑 </span><br><span class="line">	w = min(w, n);              </span><br><span class="line">      //这一句解决了很多问题，w&lt;n时为 w,w &gt;= n时 都为 n 不会越界 </span><br><span class="line">	printf(&quot;%lld\n&quot;, w);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int t;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;t);</span><br><span class="line">	while(t--)</span><br><span class="line">		test();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/king9666/article/details/94048465" target="_blank" rel="noopener">https://blog.csdn.net/king9666/article/details/94048465</a></p>
-<ul>
-<li>CSDN博客</li>
+        <h1 id="Java自学指南"><a href="#Java自学指南" class="headerlink" title="Java自学指南"></a>Java自学指南</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
+<li>语言学习与了解（Java）</li>
+<li>基本算法</li>
+<li>基本网络知识：TCP/IP HTTP/HTTPS</li>
+<li>基本设计模式</li>
 </ul>
-</details>
+<blockquote>
+<p>不用特别去看，用什么看什么</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li>操作系统：Linux (CentOS)</li>
+</ul>
+<blockquote>
+<p>有时间可以看一点，现在windows做</p>
+</blockquote>
+<ul>
+<li>代码管理：SVN / Git</li>
+<li>Java的项目管理工具：Maven / Gradle</li>
+</ul>
+<hr>
+<h2 id="框架方面"><a href="#框架方面" class="headerlink" title="框架方面"></a>框架方面</h2><h4 id="应用层框架"><a href="#应用层框架" class="headerlink" title="应用层框架"></a>应用层框架</h4><ul>
+<li><del>ssh spring + structs + hibernate</del>(老了)</li>
+<li>ssm spring + springmvc + mybatis</li>
+<li>spring boot(开发网页更好用,好上手)</li>
+</ul>
+<h4 id="各种中间件"><a href="#各种中间件" class="headerlink" title="各种中间件"></a>各种中间件</h4><ul>
+<li>MQ 消息队列</li>
+<li>RPC 通信框架</li>
+<li>elasticsearch 数据库 搜索引擎</li>
+</ul>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ul>
+<li>SQL: MySQL</li>
+<li>NoSQL: Redis(做缓存的) mongodb</li>
+</ul>
+<hr>
+<h2 id="结构方面"><a href="#结构方面" class="headerlink" title="结构方面"></a>结构方面</h2><h4 id="分布式-微服务"><a href="#分布式-微服务" class="headerlink" title="分布式/微服务"></a>分布式/微服务</h4><ul>
+<li>spring cloud</li>
+<li>dubbo</li>
+<li>rpc 通信框架</li>
+</ul>
+<h4 id="虚拟化-容器化技术"><a href="#虚拟化-容器化技术" class="headerlink" title="虚拟化/容器化技术"></a>虚拟化/容器化技术</h4><ul>
+<li>Docker 容器化</li>
+<li>k8S 容器集群(可以做类似阿里云的小服务器)</li>
+</ul>
+<hr>
+<h2 id="关注源码与性能-难度最高"><a href="#关注源码与性能-难度最高" class="headerlink" title="关注源码与性能(难度最高)"></a>关注源码与性能(难度最高)</h2><ul>
+<li>JDK 源码及部分设计思想</li>
+<li>Spring 源码</li>
+<li>JVM 细节与排错</li>
+<li>高并发 / 高可用</li>
+</ul>
+<hr>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://www.codesheep.cn/" target="_blank" rel="noopener">codesheep</a></p>
+
       
 
       
@@ -233,7 +270,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学问题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习清单</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -289,7 +330,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/23/acm训练赛-C题解/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/26/Java-学习清单/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,18 +344,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/23/acm训练赛-D题解/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/26/Java书籍推荐/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          acm训练赛-D题解
+          Java 学习书籍推荐
         
       </div>
     </a>
   
   
-    <a href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CSU-ACM 2019暑假集训热身赛-F题解</div>
+    <a href="/2019/07/26/ACM训练赛2-F-优化失败记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ACM训练赛2-F-优化失败记录</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -334,6 +375,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java自学指南"><span class="toc-number">1.</span> <span class="toc-text">Java自学指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础知识"><span class="toc-number">1.1.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">1.2.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架方面"><span class="toc-number">1.3.</span> <span class="toc-text">框架方面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#应用层框架"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">应用层框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#各种中间件"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">各种中间件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构方面"><span class="toc-number">1.4.</span> <span class="toc-text">结构方面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分布式-微服务"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">分布式/微服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#虚拟化-容器化技术"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">虚拟化/容器化技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关注源码与性能-难度最高"><span class="toc-number">1.5.</span> <span class="toc-text">关注源码与性能(难度最高)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#致谢"><span class="toc-number">2.</span> <span class="toc-text">致谢</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -345,8 +399,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2019/07/23/acm训练赛-C题解/", 
-    sourceId: "acm训练赛-C题解",
+    url: "http://yoursite.com/2019/07/26/Java-学习清单/", 
+    sourceId: "Java-学习清单",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
