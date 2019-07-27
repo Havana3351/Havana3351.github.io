@@ -6,23 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ACM训练赛2-D题解 | zgy&#39;s blog</title>
+  <title>D1. RGB Substring (hard version)-题解 | zgy&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="传送门相关博客题目详情本题是C题的升级版。唯一的区别就是数据中会有出现队头队尾相等，但选择不同会导致结果不同的“模糊”数据出现。   展开查看  解题思路 其实就是特判一下相等的情况，然后对选左选右都模拟一下，选长的那个。  代码详情12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
-<meta name="keywords" content="模拟,双端队列">
+  <meta name="description" content="与easy version的区别两个版本题意完全相同，唯一的限制在输入数据的大小上，easy version 最大只有2000，而 hard version 有2*10^5。所以暴力肯定是不能用的！！  展开查看  解题思路我们可以考虑用DP，有三种开头就循环三次，每次都将字符串遍历一次，遇到不一样的就换，然后用数组记录从第一个字母到这个字母在这种开头情况下需要换多少次，最后输出时，用末尾字母要换">
+<meta name="keywords" content="DP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ACM训练赛2-D题解">
-<meta property="og:url" content="http://yoursite.com/2019/07/25/ACM训练赛2-D题解/index.html">
+<meta property="og:title" content="D1. RGB Substring (hard version)-题解">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/D1. RGB Substring (hard version)-题解/index.html">
 <meta property="og:site_name" content="zgy&#39;s blog">
-<meta property="og:description" content="传送门相关博客题目详情本题是C题的升级版。唯一的区别就是数据中会有出现队头队尾相等，但选择不同会导致结果不同的“模糊”数据出现。   展开查看  解题思路 其实就是特判一下相等的情况，然后对选左选右都模拟一下，选长的那个。  代码详情12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
+<meta property="og:description" content="与easy version的区别两个版本题意完全相同，唯一的限制在输入数据的大小上，easy version 最大只有2000，而 hard version 有2*10^5。所以暴力肯定是不能用的！！  展开查看  解题思路我们可以考虑用DP，有三种开头就循环三次，每次都将字符串遍历一次，遇到不一样的就换，然后用数组记录从第一个字母到这个字母在这种开头情况下需要换多少次，最后输出时，用末尾字母要换">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i1.fuimg.com/694914/ad6f9043a76d3aa4.jpg">
-<meta property="og:image" content="http://i2.tiimg.com/694914/10d877f80a08a128.jpg">
-<meta property="og:updated_time" content="2019-07-25T04:38:24.243Z">
+<meta property="og:image" content="http://i2.tiimg.com/694914/691c5e3ab3bd4db9.jpg">
+<meta property="og:updated_time" content="2019-07-27T01:56:41.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ACM训练赛2-D题解">
-<meta name="twitter:description" content="传送门相关博客题目详情本题是C题的升级版。唯一的区别就是数据中会有出现队头队尾相等，但选择不同会导致结果不同的“模糊”数据出现。   展开查看  解题思路 其实就是特判一下相等的情况，然后对选左选右都模拟一下，选长的那个。  代码详情12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
-<meta name="twitter:image" content="http://i1.fuimg.com/694914/ad6f9043a76d3aa4.jpg">
+<meta name="twitter:title" content="D1. RGB Substring (hard version)-题解">
+<meta name="twitter:description" content="与easy version的区别两个版本题意完全相同，唯一的限制在输入数据的大小上，easy version 最大只有2000，而 hard version 有2*10^5。所以暴力肯定是不能用的！！  展开查看  解题思路我们可以考虑用DP，有三种开头就循环三次，每次都将字符串遍历一次，遇到不一样的就换，然后用数组记录从第一个字母到这个字母在这种开头情况下需要换多少次，最后输出时，用末尾字母要换">
+<meta name="twitter:image" content="http://i2.tiimg.com/694914/691c5e3ab3bd4db9.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zgy&#39;s blog" type="application/atom+xml">
   
@@ -158,38 +157,41 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ACM训练赛2-D题解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-D1. RGB Substring (hard version)-题解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ACM训练赛2-D题解
+      D1. RGB Substring (hard version)-题解
     </h1>
   
 
         
-        <a href="/2019/07/25/ACM训练赛2-D题解/" class="archive-article-date">
-  	<time datetime="2019-07-25T04:09:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+        <a href="/2019/07/26/D1. RGB Substring (hard version)-题解/" class="archive-article-date">
+  	<time datetime="2019-07-26T06:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313957#problem/D" target="_blank" rel="noopener">传送门</a></h1><h1 id="相关博客"><a href="#相关博客" class="headerlink" title="相关博客"></a><a href="http://www.zgyhjr.top/2019/07/24/ACM%E8%AE%AD%E7%BB%83%E8%B5%9B2-C/" target="_blank" rel="noopener">相关博客</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>本题是C题的升级版。唯一的区别就是数据中会有出现队头队尾相等，但选择不同会导致结果不同的“模糊”数据出现。</p>
-<p><img src="http://i1.fuimg.com/694914/ad6f9043a76d3aa4.jpg" alt="Markdown"></p>
+        <h1 id="与easy-version的区别"><a href="#与easy-version的区别" class="headerlink" title="与easy version的区别"></a>与easy version的区别</h1><p>两个版本题意完全相同，唯一的限制在输入数据的大小上，easy version 最大只有2000，而 hard version 有2*10^5。所以暴力肯定是不能用的！！</p>
 <details>
 <summary>展开查看</summary>
 
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
-<p>其实就是特判一下相等的情况，然后对选左选右都模拟一下，选长的那个。</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>我们可以考虑用DP，有三种开头就循环三次，每次都将字符串遍历一次，遇到不一样的就换，然后用数组记录从第一个字母到这个字母在这种开头情况下需要换多少次，最后输出时，用末尾字母要换的次数减去开头字母要换的次数，即可得到要求的子串长度答案。</p>
+<blockquote>
+<p>状态转移方程：</p>
 </blockquote>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">deque&lt;int&gt;q,qt; </span><br><span class="line">string a1;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	int a;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a);</span><br><span class="line">		q.push_back(a);</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;int&gt; v;</span><br><span class="line">	int t=0;</span><br><span class="line">	while(!q.empty())&#123;</span><br><span class="line">	if(q.front()&gt;t &amp;&amp; q.back()&gt;t)&#123;</span><br><span class="line">		if(q.front()==q.back())&#123;  //特判队首队尾相等的情况</span><br><span class="line">			int num1=0;</span><br><span class="line">			int num2=0;</span><br><span class="line">			int t1=t;  //防止模拟时改变数据 </span><br><span class="line">			qt = q;    //用个临时队列qt，进行模拟 </span><br><span class="line">			while(!qt.empty())&#123;  </span><br><span class="line">				if(qt.front() &gt; t1)&#123;  //先模拟走左边 </span><br><span class="line">				    num1++;</span><br><span class="line">					t1=qt.front();</span><br><span class="line">					qt.pop_front();</span><br><span class="line">				&#125;</span><br><span class="line">				else </span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			qt.clear();  //清空</span><br><span class="line">			qt = q;</span><br><span class="line">			t1=t;</span><br><span class="line">			while(!qt.empty())&#123;  //模拟右边 </span><br><span class="line">				if(qt.back() &gt; t1)&#123;</span><br><span class="line">					num2++;</span><br><span class="line">					t1=qt.back();</span><br><span class="line">					qt.pop_back();</span><br><span class="line">				&#125;</span><br><span class="line">				else </span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			qt.clear();</span><br><span class="line">			if(num1 &gt; num2)&#123;   //比较哪个更长,走更长的那一条路 </span><br><span class="line">				while(num1--)&#123;</span><br><span class="line">					v.push_back(q.front());  </span><br><span class="line">                                        //用来最后输出长度 </span><br><span class="line">					a1 += &quot;L&quot;;</span><br><span class="line">					t = q.front();</span><br><span class="line">					q.pop_front();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				while(num2--)&#123;</span><br><span class="line">					v.push_back(q.back());</span><br><span class="line">					a1 += &quot;R&quot;;</span><br><span class="line">					t = q.back();</span><br><span class="line">					q.pop_back();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">		else if(q.front() &lt; q.back())&#123;</span><br><span class="line">			v.push_back(q.front());</span><br><span class="line">			a1+=&quot;L&quot;;</span><br><span class="line">			t=q.front();</span><br><span class="line">			q.pop_front();</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			v.push_back(q.back());</span><br><span class="line">			a1+=&quot;R&quot;;</span><br><span class="line">			t=q.back();</span><br><span class="line">			q.pop_back();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	else if(q.back() &gt; t)&#123;</span><br><span class="line">		v.push_back(q.back());</span><br><span class="line">		a1+=&quot;R&quot;;</span><br><span class="line">		t=q.back();</span><br><span class="line">		q.pop_back();</span><br><span class="line">	&#125;</span><br><span class="line">	else  if(q.front() &gt; t)&#123;</span><br><span class="line">		v.push_back(q.front());</span><br><span class="line">		a1+=&quot;L&quot;;</span><br><span class="line">		t=q.front(); </span><br><span class="line">		q.pop_front();</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	  break;</span><br><span class="line">	&#125;</span><br><span class="line">	int len = 1;</span><br><span class="line">	cout &lt;&lt; v.size() &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; a1 &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>状态转移方程实现代码：f[j][z] = f[j][z-1] + 1;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int j=0;j&lt;3;j++)&#123;</span><br><span class="line">//三种开头循环三次 </span><br><span class="line">	for(int z=1;z&lt;=n;z++)&#123;</span><br><span class="line">		if(s1[z-1] != s2[(j+z-1)%3])</span><br><span class="line">			f[j][z] = f[j][z-1] + 1;</span><br><span class="line">		else</span><br><span class="line">		    f[j][z] = f[j][z-1];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/zjyang12345/article/details/89604682" target="_blank" rel="noopener">https://blog.csdn.net/zjyang12345/article/details/89604682</a></p>
-<p><img src="http://i2.tiimg.com/694914/10d877f80a08a128.jpg" alt="Markdown"></p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int f[3][200010];</span><br><span class="line">int main()&#123;</span><br><span class="line">	int q,n,k;</span><br><span class="line">	cin &gt;&gt; q;</span><br><span class="line">	string s1,s2;</span><br><span class="line">	s2 = &quot;RGB&quot;;</span><br><span class="line">	for(int i=0;i&lt;q;i++)&#123;</span><br><span class="line">		int ans=0x3f3f3f3f;</span><br><span class="line">		cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">		cin &gt;&gt; s1;</span><br><span class="line">		f[0][0] = 0;</span><br><span class="line">		f[1][0] = 0;</span><br><span class="line">		f[2][0] = 0;</span><br><span class="line">		for(int j=0;j&lt;3;j++)&#123;</span><br><span class="line">		//三种开头循环三次 </span><br><span class="line">			for(int z=1;z&lt;=n;z++)&#123;</span><br><span class="line">				if(s1[z-1] != s2[(j+z-1)%3])</span><br><span class="line">					f[j][z] = f[j][z-1] + 1;</span><br><span class="line">				else</span><br><span class="line">					f[j][z] = f[j][z-1];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int j=0;j&lt;3;j++)&#123;</span><br><span class="line">			for(int z=k;z&lt;=n;z++)&#123;</span><br><span class="line">				ans = min(ans,f[j][z]-f[j][z-k]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/weixin_39132605/article/details/97270464" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39132605/article/details/97270464</a></p>
+<p><img src="http://i2.tiimg.com/694914/691c5e3ab3bd4db9.jpg" alt="Markdown"></p>
 </details>
       
 
@@ -229,11 +231,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">双端队列</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
         		</li>
       		
 		</ul>
@@ -289,7 +287,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/25/ACM训练赛2-D题解/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/26/D1. RGB Substring (hard version)-题解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,18 +301,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/25/先记住这个题/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/26/Java科普/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          先记住这个题
+          Java科普
         
       </div>
     </a>
   
   
-    <a href="/2019/07/24/ACM训练赛2-C/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ACM训练赛2-C</div>
+    <a href="/2019/07/26/D1. RGB Substring (easy version)-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">D1. RGB Substring (easy version)-题解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -341,7 +339,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#传送门"><span class="toc-number">1.</span> <span class="toc-text">传送门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关博客"><span class="toc-number">2.</span> <span class="toc-text">相关博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题目详情"><span class="toc-number">3.</span> <span class="toc-text">题目详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解题思路"><span class="toc-number">4.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码详情"><span class="toc-number">5.</span> <span class="toc-text">代码详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#致谢"><span class="toc-number">6.</span> <span class="toc-text">致谢</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#与easy-version的区别"><span class="toc-number">1.</span> <span class="toc-text">与easy version的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解题思路"><span class="toc-number">2.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码详情"><span class="toc-number">3.</span> <span class="toc-text">代码详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#致谢"><span class="toc-number">4.</span> <span class="toc-text">致谢</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -358,8 +356,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2019/07/25/ACM训练赛2-D题解/", 
-    sourceId: "ACM训练赛2-D题解",
+    url: "http://yoursite.com/2019/07/26/D1. RGB Substring (hard version)-题解/", 
+    sourceId: "D1. RGB Substring (hard version)-题解",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
