@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的第一篇博客 | zgy&#39;s blog</title>
+  <title>E. Median String-题解 | zgy&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一章   第一次写博客，有点激动，不知道写点啥。    我是一名即将上大二的新疆大学的软件工程专业学生。    暑假的时候突然想做一个自己的静态博客。就用hexo搭建了一个。    平时写markdown的话用的是vscode，还不错。 第二章   以后写点什么？？？    这个问题不算太难说：  自我介绍 学习心得 技术交流 生活趣事   致谢   感谢大家看我的博客，以及对我博客的支持。">
+  <meta name="description" content="传送门题目详情You are given two strings s and t, both consisting of exactly k lowercase Latin letters, s is lexicographically less than t. Let’s consider list of all strings consisting of exactly k lowercase">
+<meta name="keywords" content="转化思想,进制转化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
-<meta property="og:url" content="http://yoursite.com/2019/07/18/我的第一篇博客/index.html">
+<meta property="og:title" content="E. Median String-题解">
+<meta property="og:url" content="http://yoursite.com/2019/07/29/E-Median-String-题解/index.html">
 <meta property="og:site_name" content="zgy&#39;s blog">
-<meta property="og:description" content="第一章   第一次写博客，有点激动，不知道写点啥。    我是一名即将上大二的新疆大学的软件工程专业学生。    暑假的时候突然想做一个自己的静态博客。就用hexo搭建了一个。    平时写markdown的话用的是vscode，还不错。 第二章   以后写点什么？？？    这个问题不算太难说：  自我介绍 学习心得 技术交流 生活趣事   致谢   感谢大家看我的博客，以及对我博客的支持。">
+<meta property="og:description" content="传送门题目详情You are given two strings s and t, both consisting of exactly k lowercase Latin letters, s is lexicographically less than t. Let’s consider list of all strings consisting of exactly k lowercase">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-21T00:36:02.334Z">
+<meta property="og:updated_time" content="2019-07-29T05:49:59.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的第一篇博客">
-<meta name="twitter:description" content="第一章   第一次写博客，有点激动，不知道写点啥。    我是一名即将上大二的新疆大学的软件工程专业学生。    暑假的时候突然想做一个自己的静态博客。就用hexo搭建了一个。    平时写markdown的话用的是vscode，还不错。 第二章   以后写点什么？？？    这个问题不算太难说：  自我介绍 学习心得 技术交流 生活趣事   致谢   感谢大家看我的博客，以及对我博客的支持。">
+<meta name="twitter:title" content="E. Median String-题解">
+<meta name="twitter:description" content="传送门题目详情You are given two strings s and t, both consisting of exactly k lowercase Latin letters, s is lexicographically less than t. Let’s consider list of all strings consisting of exactly k lowercase">
   
     <link rel="alternative" href="/atom.xml" title="zgy&#39;s blog" type="application/atom+xml">
   
@@ -154,42 +155,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-我的第一篇博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-E-Median-String-题解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客
+      E. Median String-题解
     </h1>
   
 
         
-        <a href="/2019/07/18/我的第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-17T16:18:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
+        <a href="/2019/07/29/E-Median-String-题解/" class="archive-article-date">
+  	<time datetime="2019-07-29T05:43:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>   第一次写博客，有点激动，不知道写点啥。</p>
-<p>   我是一名即将上大二的新疆大学的软件工程专业学生。</p>
-<p>   暑假的时候突然想做一个自己的静态博客。就用hexo搭建了一个。</p>
-<p>   平时写markdown的话用的是vscode，还不错。</p>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>   以后写点什么？？？</p>
-<p>   这个问题不算太难说：</p>
-<ol>
-<li>自我介绍</li>
-<li>学习心得</li>
-<li>技术交流</li>
-<li>生活趣事</li>
-</ol>
-<hr>
-<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>   感谢大家看我的博客，以及对我博客的支持。</p>
-<hr>
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="http://codeforces.com/problemset/problem/1144/E" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given two strings s and t, both consisting of exactly k lowercase Latin letters, s is lexicographically less than t.</p>
+<p>Let’s consider list of all strings consisting of exactly k lowercase Latin letters, lexicographically not less than s and not greater than t (including s and t) in lexicographical order. For example, for k=2, s=”az” and t=”bf” the list will be [“az”, “ba”, “bb”, “bc”, “bd”, “be”, “bf”].</p>
+<p>Your task is to print the median (the middle element) of this list. For the example above this will be “bc”.</p>
+<p>It is guaranteed that there is an odd number of strings lexicographically not less than s and not greater than t.</p>
+<details>
+<summary>展开查看</summary>
 
+<p>Input<br>The first line of the input contains one integer k (1≤k≤2⋅105) — the length of strings.</p>
+<p>The second line of the input contains one string s consisting of exactly k lowercase Latin letters.</p>
+<p>The third line of the input contains one string t consisting of exactly k lowercase Latin letters.</p>
+<p>It is guaranteed that s is lexicographically less than t.</p>
+<p>It is guaranteed that there is an odd number of strings lexicographically not less than s and not greater than t.</p>
+<p>Output<br>Print one string consisting exactly of k lowercase Latin letters — the median (the middle element) of list of strings of length k lexicographically not less than s and not greater than t.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>其实这个题说白了还是一个求中值的题目，只不过我们可以将其看为26进制！！转化成数字算(l+r)/2,就做正常的数字加法与除法，算出中值后再转化为字符串！！</p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n,jinwei=0;</span><br><span class="line">	string s1,s2;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">	int a[200010]=&#123;0,0&#125;;</span><br><span class="line">	for(int i=n-1;i&gt;=0;i--)&#123;</span><br><span class="line">	//求和 </span><br><span class="line">		a[i] = jinwei + s1[i]-&apos;a&apos; + s2[i]-&apos;a&apos;;</span><br><span class="line">		if(a[i]&gt;=26 &amp;&amp; i!=0)&#123;</span><br><span class="line">			jinwei = 1;  //进位 </span><br><span class="line">			a[i] -= 26;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			jinwei = 0; //不进位记得归零！！</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">	//除二</span><br><span class="line">		if(a[i]%2)</span><br><span class="line">			a[i+1] += (a[i]%2)*26;  //除不尽，后一位加余数</span><br><span class="line">		a[i] /= 2; </span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)</span><br><span class="line">		cout &lt;&lt; char(a[i]+&apos;a&apos;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/Mr___jie/article/details/89024391" target="_blank" rel="noopener">https://blog.csdn.net/Mr___jie/article/details/89024391</a></p>
+</details>
       
 
       
@@ -223,6 +226,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">转化思想</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">进制转化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -273,7 +291,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/18/我的第一篇博客/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/29/E-Median-String-题解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,18 +305,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/22/CSU-ACM-2019暑假集训热身赛-F题解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CSU-ACM 2019暑假集训热身赛-F题解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2019/07/29/D-Equalize-Them-All-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">D. Equalize Them All-题解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -325,7 +334,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一章"><span class="toc-number">1.</span> <span class="toc-text">第一章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二章"><span class="toc-number">2.</span> <span class="toc-text">第二章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#致谢"><span class="toc-number">3.</span> <span class="toc-text">致谢</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#传送门"><span class="toc-number">1.</span> <span class="toc-text">传送门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题目详情"><span class="toc-number">2.</span> <span class="toc-text">题目详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解题思路"><span class="toc-number">3.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码详情"><span class="toc-number">4.</span> <span class="toc-text">代码详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#致谢"><span class="toc-number">5.</span> <span class="toc-text">致谢</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -342,8 +351,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2019/07/18/我的第一篇博客/", 
-    sourceId: "我的第一篇博客",
+    url: "http://yoursite.com/2019/07/29/E-Median-String-题解/", 
+    sourceId: "E-Median-String-题解",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
