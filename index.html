@@ -152,6 +152,186 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-D1-Submarine-in-the-Rybinsk-Sea-easy-edition-题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/30/D1-Submarine-in-the-Rybinsk-Sea-easy-edition-题解/">D1. Submarine in the Rybinsk Sea (easy edition)-题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/30/D1-Submarine-in-the-Rybinsk-Sea-easy-edition-题解/" class="archive-article-date">
+  	<time datetime="2019-07-30T12:20:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="https-codeforces-com-problemset-problem-1195-D1"><a href="#https-codeforces-com-problemset-problem-1195-D1" class="headerlink" title="https://codeforces.com/problemset/problem/1195/D1"></a><a href="https://codeforces.com/problemset/problem/1195/D1" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/1195/D1</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>This problem differs from the next one only in the presence of the constraint on the equal length of all numbers a1,a2,…,an. Actually, this problem is a subtask of the problem D2 from the same contest and the solution of D2 solves this subtask too.</p>
+<p>A team of SIS students is going to make a trip on a submarine. Their target is an ancient treasure in a sunken ship lying on the bottom of the Great Rybinsk sea. Unfortunately, the students don’t know the coordinates of the ship, so they asked Meshanya (who is a hereditary mage) to help them. He agreed to help them, but only if they solve his problem.</p>
+<p>Let’s denote a function that alternates digits of two numbers f(a1a2…ap−1ap,b1b2…bq−1bq), where a1…ap and b1…bq are digits of two integers written in the decimal notation without leading zeros.</p>
+<p>In other words, the function f(x,y) alternately shuffles the digits of the numbers x and y by writing them from the lowest digits to the older ones, starting with the number y. The result of the function is also built from right to left (that is, from the lower digits to the older ones). If the digits of one of the arguments have ended, then the remaining digits of the other argument are written out. Familiarize with examples and formal definitions of the function below.</p>
+<details>
+<summary>展开查看</summary>
+
+<p>For example:<br>f(1111,2222)=12121212<br>f(7777,888)=7787878<br>f(33,44444)=4443434<br>f(555,6)=5556<br>f(111,2222)=2121212<br>Formally,</p>
+<p>if p≥q then f(a1…ap,b1…bq)=a1a2…ap−q+1b1ap−q+2b2…ap−1bq−1apbq;<br>if p&lt;q then f(a1…ap,b1…bq)=b1b2…bq−pa1bq−p+1a2…ap−1bq−1apbq.<br>Mishanya gives you an array consisting of n integers ai. All numbers in this array are of equal length (that is, they consist of the same number of digits). Your task is to help students to calculate ∑ni=1∑nj=1f(ai,aj) modulo 998244353.</p>
+<p>Input<br>The first line of the input contains a single integer n (1≤n≤100000) — the number of elements in the array. The second line of the input contains n integers a1,a2,…,an (1≤ai≤109) — the elements of the array. All numbers a1,a2,…,an are of equal length (that is, they consist of the same number of digits).</p>
+<p>Output<br>Print the answer modulo 998244353.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
+<p>还是模拟，但直接完全模拟的话会爆掉，所以第一次优化在：每将两个数的结果ans算出来时就取模，最后加完再取一次模。第二个优化就是：f(ai,aj)+f(aj,ai)=f(ai,ai)+f(aj,aj)。<del>我也不知道为啥反正是个数学问题</del> 所以算一个再乘 n 就行了。</p>
+</blockquote>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#define ll unsigned long long int</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n,a[100010];</span><br><span class="line">	ll add=0;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	for(int i=1;i&lt;=n;i++)</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">		int k=0,num2 = a[i],num1 = a[i];</span><br><span class="line">		ll ans=0,ok=10;</span><br><span class="line">		while(1)&#123;</span><br><span class="line">			int t1,t2;</span><br><span class="line">			t1 = num1 % 10;</span><br><span class="line">			t2 = num2 % 10;</span><br><span class="line">			if(k == 0)&#123;</span><br><span class="line">				ans += (t2 + t1*ok);</span><br><span class="line">				ok = ok * 10;</span><br><span class="line">				k++;</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				ans += t2 * ok;</span><br><span class="line">				ok = ok * 10;</span><br><span class="line">				ans += t1 * ok;</span><br><span class="line">				ok = ok * 10;</span><br><span class="line">			&#125;</span><br><span class="line">			num1 = num1 / 10;</span><br><span class="line">			num2 = num2 / 10;</span><br><span class="line">			if(num1 == 0)&#123;</span><br><span class="line">				add += ans % 998244353;</span><br><span class="line">				break;</span><br><span class="line">			&#125;		</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	add = add * n % 998244353;</span><br><span class="line">	printf(&quot;%lld\n&quot;,add);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/douglasconnor/article/details/97568354" target="_blank" rel="noopener">https://blog.csdn.net/douglasconnor/article/details/97568354</a></p>
+</details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/30/D1-Submarine-in-the-Rybinsk-Sea-easy-edition-题解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C-Robot-Breakout-题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/30/C-Robot-Breakout-题解/">C. Robot Breakout-题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/30/C-Robot-Breakout-题解/" class="archive-article-date">
+  	<time datetime="2019-07-30T07:00:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://codeforces.com/problemset/problem/1196/C" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>n robots have escaped from your laboratory! You have to find them as soon as possible, because these robots are experimental, and their behavior is not tested yet, so they may be really dangerous!</p>
+<p>Fortunately, even though your robots have escaped, you still have some control over them. First of all, you know the location of each robot: the world you live in can be modeled as an infinite coordinate plane, and the i-th robot is currently located at the point having coordinates (xi, yi). Furthermore, you may send exactly one command to all of the robots. The command should contain two integer numbers X and Y, and when each robot receives this command, it starts moving towards the point having coordinates (X, Y). The robot stops its movement in two cases:</p>
+<p>either it reaches (X, Y);<br>or it cannot get any closer to (X, Y).<br>Normally, all robots should be able to get from any point of the coordinate plane to any other point. Each robot usually can perform four actions to move. Let’s denote the current coordinates of the robot as (xc, yc). Then the movement system allows it to move to any of the four adjacent points:</p>
+<p>the first action allows it to move from (xc, yc) to (xc−1, yc);<br>the second action allows it to move from (xc, yc) to (xc, yc+1);<br>the third action allows it to move from (xc, yc) to (xc+1, yc);<br>the fourth action allows it to move from (xc, yc) to (xc, yc−1).<br>Unfortunately, it seems that some movement systems of some robots are malfunctioning. For each robot you know which actions it can perform, and which it cannot perform.</p>
+<p>You want to send a command so all robots gather at the same point. To do so, you have to choose a pair of integer numbers X and Y so that each robot can reach the point (X, Y). Is it possible to find such a point?</p>
+<details>
+<summary>展开查看</summary>
+
+<p>Input<br>The first line contains one integer q (1≤q≤105) — the number of queries.</p>
+<p>Then q queries follow. Each query begins with one line containing one integer n (1≤n≤105) — the number of robots in the query. Then n lines follow, the i-th of these lines describes the i-th robot in the current query: it contains six integer numbers xi, yi, fi,1, fi,2, fi,3 and fi,4 (−105≤xi,yi≤105, 0≤fi,j≤1). The first two numbers describe the initial location of the i-th robot, and the following four numbers describe which actions the i-th robot can use to move (fi,j=1 if the i-th robot can use the j-th action, and fi,j=0 if it cannot use the j-th action).</p>
+<p>It is guaranteed that the total number of robots over all queries does not exceed 105.</p>
+<p>Output<br>You should answer each query independently, in the order these queries appear in the input.</p>
+<p>To answer a query, you should do one of the following:</p>
+<p>if it is impossible to find a point that is reachable by all n robots, print one number 0 on a separate line;<br>if it is possible to find a point that is reachable by all n robots, print three space-separated integers on the same line: 1 X Y, where X and Y are the coordinates of the point reachable by all n robots. Both X and Y should not exceed 105 by absolute value; it is guaranteed that if there exists at least one point reachable by all robots, then at least one of such points has both coordinates not exceeding 105 by absolute value.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
+<p>这是一个典型的模拟题目，每个机器人都有自己的x,y坐标，并且只能做上下左右四个动作中的某几个动作。我们维护一个矩形四顶点坐标，根据每个机器人所能做的动作对坐标进行修改，如果最后至少是个图形(一条线段都行)，这上面的点都是满足条件的！！</p>
+</blockquote>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using  namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int q,mlx,mrx,muy,mdy;</span><br><span class="line">	cin &gt;&gt; q;</span><br><span class="line">	for(int i=0;i&lt;q;i++)&#123;</span><br><span class="line">		mlx = mdy = -100000;</span><br><span class="line">		mrx = muy = 100000;</span><br><span class="line">		int n;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		for(int j=0;j&lt;n;j++)&#123;</span><br><span class="line">			int x,y,f1,f2,f3,f4;</span><br><span class="line">			cin &gt;&gt; x &gt;&gt; y &gt;&gt; f1 &gt;&gt; f2 &gt;&gt; f3 &gt;&gt; f4;</span><br><span class="line">			if(!f1)  //不能向左 </span><br><span class="line">				mlx = max(mlx,x);</span><br><span class="line">			if(!f2)  //不能向上 </span><br><span class="line">				muy = min(muy,y);</span><br><span class="line">			if(!f3)  //不能向右 </span><br><span class="line">				mrx = min(mrx,x);</span><br><span class="line">			if(!f4)  //不能向下 </span><br><span class="line">				mdy = max(mdy,y);</span><br><span class="line">		&#125;</span><br><span class="line">		if(mrx&gt;=mlx &amp;&amp; mdy&lt;=muy)</span><br><span class="line">			cout &lt;&lt; &quot;1 &quot; &lt;&lt; mrx &lt;&lt; &quot; &quot; &lt;&lt; muy &lt;&lt; &quot;\n&quot;;</span><br><span class="line">		else</span><br><span class="line">			cout &lt;&lt; &quot;0 &quot; &lt;&lt; &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/30/C-Robot-Breakout-题解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ACM训练赛4-C题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -593,11 +773,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
         		</li>
       		
 		</ul>
@@ -608,6 +788,95 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/26/Java科普/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-D1. RGB Substring (easy version)-题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/26/D1. RGB Substring (easy version)-题解/">D1. RGB Substring (easy version)-题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/26/D1. RGB Substring (easy version)-题解/" class="archive-article-date">
+  	<time datetime="2019-07-26T06:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="http://codeforces.com/problemset/problem/1196/D1" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given a string s consisting of n characters, each character is ‘R’, ‘G’ or ‘B’.</p>
+<p>You are also given an integer k. Your task is to change the minimum number of characters in the initial string s so that after the changes there will be a string of length k that is a substring of s, and is also a substring of the infinite string “RGBRGBRGB …”.</p>
+<p>A string a is a substring of string b if there exists a positive integer i such that a1=bi, a2=bi+1, a3=bi+2, …, a|a|=bi+|a|−1. For example, strings “GBRG”, “B”, “BR” are substrings of the infinite string “RGBRGBRGB …” while “GR”, “RGR” and “GGG” are not.</p>
+<p>You have to answer q independent queries.</p>
+<details>
+<summary>展开查看</summary>
+
+<p>Input<br>The first line of the input contains one integer q (1≤q≤2000) — the number of queries. Then q queries follow.</p>
+<p>The first line of the query contains two integers n and k (1≤k≤n≤2000) — the length of the string s and the length of the substring.</p>
+<p>The second line of the query contains a string s consisting of n characters ‘R’, ‘G’ and ‘B’.</p>
+<p>It is guaranteed that the sum of n over all queries does not exceed 2000 (∑n≤2000).</p>
+<p>Output<br>For each query print one integer — the minimum number of characters you need to change in the initial string s so that after changing there will be a substring of length k in s that is also a substring of the infinite string “RGBRGBRGB …”.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>没什么特别的方法，数据这么小直接暴力。基本想法就是对字符串进行遍历，遇见不符合规律的直接改掉，有三种开头就遍历三次。。。最后取改的最少的。</p>
+<p>这个算法的时间复杂度为：O((n-k)<em>k</em>q)。数据小所以才能过哦！！！</p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int q,n,k;</span><br><span class="line">	cin &gt;&gt; q;</span><br><span class="line">	string s1,s2;</span><br><span class="line">	s2 = &quot;RGB&quot;;</span><br><span class="line">	for(int i=0;i&lt;q;i++)&#123;</span><br><span class="line">		int ans=3000;</span><br><span class="line">		int flag,t;</span><br><span class="line">		cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">		cin &gt;&gt; s1;</span><br><span class="line">		for(int j=0;j&lt;=n-k;j++)&#123;</span><br><span class="line">			bool ok = false;</span><br><span class="line">			for(int z=0;z&lt;3;z++)&#123;</span><br><span class="line">			//三种开头，遍历三次 </span><br><span class="line">				t = 0;</span><br><span class="line">				flag = z;</span><br><span class="line">				if(s1[j] != s2[flag])</span><br><span class="line">					t++;</span><br><span class="line">				for(int z=1;z&lt;k;z++)&#123;</span><br><span class="line">					flag++;  //根据开头确定下一个字母 </span><br><span class="line">					flag %= 3; //取余保证不会越界 </span><br><span class="line">					if(s1[j+z] != s2[flag])</span><br><span class="line">						t++;</span><br><span class="line">				&#125;</span><br><span class="line">				if(t &lt; ans)</span><br><span class="line">					ans = t;</span><br><span class="line">				if(ans == 0)&#123;</span><br><span class="line">					ok = true; </span><br><span class="line">					//剪枝 </span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if(ok)</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">暴力</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/26/D1. RGB Substring (easy version)-题解/">展开全文 >></a>
         </p>
       
 
@@ -701,11 +970,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
         		</li>
       		
 		</ul>
@@ -716,95 +985,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/26/Java书籍推荐/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-D1. RGB Substring (easy version)-题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/D1. RGB Substring (easy version)-题解/">D1. RGB Substring (easy version)-题解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/26/D1. RGB Substring (easy version)-题解/" class="archive-article-date">
-  	<time datetime="2019-07-26T06:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="http://codeforces.com/problemset/problem/1196/D1" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given a string s consisting of n characters, each character is ‘R’, ‘G’ or ‘B’.</p>
-<p>You are also given an integer k. Your task is to change the minimum number of characters in the initial string s so that after the changes there will be a string of length k that is a substring of s, and is also a substring of the infinite string “RGBRGBRGB …”.</p>
-<p>A string a is a substring of string b if there exists a positive integer i such that a1=bi, a2=bi+1, a3=bi+2, …, a|a|=bi+|a|−1. For example, strings “GBRG”, “B”, “BR” are substrings of the infinite string “RGBRGBRGB …” while “GR”, “RGR” and “GGG” are not.</p>
-<p>You have to answer q independent queries.</p>
-<details>
-<summary>展开查看</summary>
-
-<p>Input<br>The first line of the input contains one integer q (1≤q≤2000) — the number of queries. Then q queries follow.</p>
-<p>The first line of the query contains two integers n and k (1≤k≤n≤2000) — the length of the string s and the length of the substring.</p>
-<p>The second line of the query contains a string s consisting of n characters ‘R’, ‘G’ and ‘B’.</p>
-<p>It is guaranteed that the sum of n over all queries does not exceed 2000 (∑n≤2000).</p>
-<p>Output<br>For each query print one integer — the minimum number of characters you need to change in the initial string s so that after changing there will be a substring of length k in s that is also a substring of the infinite string “RGBRGBRGB …”.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>没什么特别的方法，数据这么小直接暴力。基本想法就是对字符串进行遍历，遇见不符合规律的直接改掉，有三种开头就遍历三次。。。最后取改的最少的。</p>
-<p>这个算法的时间复杂度为：O((n-k)<em>k</em>q)。数据小所以才能过哦！！！</p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int q,n,k;</span><br><span class="line">	cin &gt;&gt; q;</span><br><span class="line">	string s1,s2;</span><br><span class="line">	s2 = &quot;RGB&quot;;</span><br><span class="line">	for(int i=0;i&lt;q;i++)&#123;</span><br><span class="line">		int ans=3000;</span><br><span class="line">		int flag,t;</span><br><span class="line">		cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">		cin &gt;&gt; s1;</span><br><span class="line">		for(int j=0;j&lt;=n-k;j++)&#123;</span><br><span class="line">			bool ok = false;</span><br><span class="line">			for(int z=0;z&lt;3;z++)&#123;</span><br><span class="line">			//三种开头，遍历三次 </span><br><span class="line">				t = 0;</span><br><span class="line">				flag = z;</span><br><span class="line">				if(s1[j] != s2[flag])</span><br><span class="line">					t++;</span><br><span class="line">				for(int z=1;z&lt;k;z++)&#123;</span><br><span class="line">					flag++;  //根据开头确定下一个字母 </span><br><span class="line">					flag %= 3; //取余保证不会越界 </span><br><span class="line">					if(s1[j+z] != s2[flag])</span><br><span class="line">						t++;</span><br><span class="line">				&#125;</span><br><span class="line">				if(t &lt; ans)</span><br><span class="line">					ans = t;</span><br><span class="line">				if(ans == 0)&#123;</span><br><span class="line">					ok = true; </span><br><span class="line">					//剪枝 </span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if(ok)</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</details>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">暴力</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/26/D1. RGB Substring (easy version)-题解/">展开全文 >></a>
         </p>
       
 
@@ -924,11 +1104,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习清单</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习清单</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -939,195 +1119,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/26/Java-学习清单/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ACM训练赛2-F-优化失败记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/ACM训练赛2-F-优化失败记录/">ACM训练赛2-F-优化失败记录</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/26/ACM训练赛2-F-优化失败记录/" class="archive-article-date">
-  	<time datetime="2019-07-26T02:51:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="上一篇博客"><a href="#上一篇博客" class="headerlink" title="上一篇博客"></a><a href="http://www.zgyhjr.top/2019/07/25/ACM%E8%AE%AD%E7%BB%83%E8%B5%9B2-F%E9%A2%98%E8%A7%A3/" target="_blank" rel="noopener">上一篇博客</a></h1><h1 id="优化的想法"><a href="#优化的想法" class="headerlink" title="优化的想法"></a>优化的想法</h1><blockquote>
-<p>今天早上对这个题又进行了讨论。感觉multiset每插入一个数都要进行排序比较费时，而vector用sort也可完成排序操作(只需数据存完后排序一次)，这样不就节省了时间吗？？</p>
-<p><del>事实证明节省了个寂寞</del></p>
-</blockquote>
-<p><img src="http://i2.tiimg.com/694914/3a2d77293120f201.jpg" alt="Markdown"></p>
-<details>
-<summary>展开查看</summary>
-
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn = 200010;</span><br><span class="line">vector&lt;int&gt; v,st;</span><br><span class="line">int a[maxn];</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		v.push_back(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		st.push_back(b);</span><br><span class="line">	&#125;</span><br><span class="line">	sort(st.begin(),st.end());</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		auto u = lower_bound(st.begin(),st.end(),n-v[i]);</span><br><span class="line">		//利用二分查找返回第一个大于等于参数的位置</span><br><span class="line">		if(u == st.end())</span><br><span class="line">			u = st.begin();</span><br><span class="line">		a[i] = (*u+v[i]) % n;</span><br><span class="line">		st.erase(u); </span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		if(i == 0)</span><br><span class="line">			cout &lt;&lt; a[0];</span><br><span class="line">		else</span><br><span class="line">			cout &lt;&lt; &quot; &quot; &lt;&lt; a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="失败截图"><a href="#失败截图" class="headerlink" title="失败截图"></a>失败截图</h1><p><img src="http://i1.fuimg.com/694914/a5e4c81cb9ec2a46.png" alt="Markdown"></p>
-<p><img src="http://i1.fuimg.com/694914/17388c956b8ea315.jpg" alt="Markdown"></p>
-</details>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vector</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">失败锦集</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">multiset</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/26/ACM训练赛2-F-优化失败记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-Array-Splitting-题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/C-Array-Splitting-题解/">C. Array Splitting-题解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/26/C-Array-Splitting-题解/" class="archive-article-date">
-  	<time datetime="2019-07-26T02:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="http://codeforces.com/problemset/problem/1197/C" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given a sorted array a1,a2,…,an (for each index i&gt;1 condition ai≥ai−1 holds) and an integer k.</p>
-<p>You are asked to divide this array into k non-empty consecutive subarrays. Every element in the array should be included in exactly one subarray.</p>
-<p>Let max(i) be equal to the maximum in the i-th subarray, and min(i) be equal to the minimum in the i-th subarray. The cost of division is equal to ∑i=1k(max(i)−min(i)). For example, if a=[2,4,5,5,8,11,19] and we divide it into 3 subarrays in the following way: [2,4],[5,5],[8,11,19], then the cost of division is equal to (4−2)+(5−5)+(19−8)=13.</p>
-<p>Calculate the minimum cost you can obtain by dividing the array a into k non-empty consecutive subarrays.</p>
-<details>
-<summary>展开查看</summary>
-
-<p>Input<br>The first line contains two integers n and k (1≤k≤n≤3⋅105).</p>
-<p>The second line contains n integers a1,a2,…,an (1≤ai≤109, ai≥ai−1).</p>
-<p>Output<br>Print the minimum cost you can obtain by dividing the array a into k nonempty consecutive subarrays.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
-<p>先算出每两个数之间的差值，然后对其排序，取前 n-k 项和。这真是个好方法 <del>好难想啊</del>。</p>
-<p>接下解释一下为什么这样可以：这就像高中学排列组合时的插板方法一样。我们将代价排序后，为了使代价最小，就要把数组从代价最大处断开(n-k保证了分段数量的正确性)。</p>
-</blockquote>
-<p><img src="http://i2.tiimg.com/694914/4eab250e4ec4c098.png" alt="Markdown"></p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	long long int n,k,ans=0;</span><br><span class="line">	vector&lt;long long int&gt; st,mu;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	for(long long int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		long long int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		st.push_back(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(long long int i=1;i&lt;n;i++)</span><br><span class="line">		mu.push_back(st[i]-st[i-1]);</span><br><span class="line">	sort(mu.begin(),mu.end());</span><br><span class="line">	for(long long int i=0;i&lt;n-k;i++)</span><br><span class="line">		ans = ans + mu[i];</span><br><span class="line">	cout &lt;&lt; ans;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/dream_it_/article/details/97039739" target="_blank" rel="noopener">https://blog.csdn.net/dream_it_/article/details/97039739</a></p>
-<p><img src="http://i2.tiimg.com/694914/3a2d77293120f201.jpg" alt="Markdown"></p>
-</details>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vector</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">插板问题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/26/C-Array-Splitting-题解/">展开全文 >></a>
         </p>
       
 
@@ -1258,11 +1249,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">multiset</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抽象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vector</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">失败锦集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,23 +1301,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vector</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抽象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">失败锦集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">multiset</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">暴力</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1314,27 +1325,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">书籍推荐</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
               </li>
              
               <li class="article-tag-list-item">
