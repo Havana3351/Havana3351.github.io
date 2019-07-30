@@ -9,14 +9,14 @@
   <title>D1. Submarine in the Rybinsk Sea (easy edition)-题解 | zgy&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="https://codeforces.com/problemset/problem/1195/D1题目详情This problem differs from the next one only in the presence of the constraint on the equal length of all numbers a1,a2,…,an. Actually, this problem">
-<meta name="keywords" content="模拟">
+<meta name="keywords" content="模拟,贡献">
 <meta property="og:type" content="article">
 <meta property="og:title" content="D1. Submarine in the Rybinsk Sea (easy edition)-题解">
 <meta property="og:url" content="http://yoursite.com/2019/07/30/D1-Submarine-in-the-Rybinsk-Sea-easy-edition-题解/index.html">
 <meta property="og:site_name" content="zgy&#39;s blog">
 <meta property="og:description" content="https://codeforces.com/problemset/problem/1195/D1题目详情This problem differs from the next one only in the presence of the constraint on the equal length of all numbers a1,a2,…,an. Actually, this problem">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-30T12:39:24.632Z">
+<meta property="og:updated_time" content="2019-07-30T13:54:10.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="D1. Submarine in the Rybinsk Sea (easy edition)-题解">
 <meta name="twitter:description" content="https://codeforces.com/problemset/problem/1195/D1题目详情This problem differs from the next one only in the presence of the constraint on the equal length of all numbers a1,a2,…,an. Actually, this problem">
@@ -188,6 +188,8 @@
 <p>Output<br>Print the answer modulo 998244353.</p>
 <h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
 <p>还是模拟，但直接完全模拟的话会爆掉，所以第一次优化在：每将两个数的结果ans算出来时就取模，最后加完再取一次模。第二个优化就是：f(ai,aj)+f(aj,ai)=f(ai,ai)+f(aj,aj)。<del>我也不知道为啥反正是个数学问题</del> 所以算一个再乘 n 就行了。</p>
+<p>刚在回宿舍的路上讨论了一波，茅塞顿开。之前在做有关模拟的题时，在题解中就碰到过，贡献这个说法，但一直不理解其意思，现在大概了解了。透过上面的转换公式（公式由找规律得到）我们可以知道，一个f(ai,ai)在整个计算过程中可以“贡献”5次，及根据题目算出的f(ai,ai)的值可以用五次。为什么呢？？仔细想一想。。。</p>
+<p>这是因为：首先在题目要求中就需要一个f(ai,ai)，再者，每一个ai与4个不同aj组合都可分离出一个f(ai,ai)，所以只需要将所有的f(ai,ai)加起来再乘以 n 就可以得到答案了！！</p>
 </blockquote>
 <h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#define ll unsigned long long int</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n,a[100010];</span><br><span class="line">	ll add=0;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	for(int i=1;i&lt;=n;i++)</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">		int k=0,num2 = a[i],num1 = a[i];</span><br><span class="line">		ll ans=0,ok=10;</span><br><span class="line">		while(1)&#123;</span><br><span class="line">			int t1,t2;</span><br><span class="line">			t1 = num1 % 10;</span><br><span class="line">			t2 = num2 % 10;</span><br><span class="line">			if(k == 0)&#123;</span><br><span class="line">				ans += (t2 + t1*ok);</span><br><span class="line">				ok = ok * 10;</span><br><span class="line">				k++;</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				ans += t2 * ok;</span><br><span class="line">				ok = ok * 10;</span><br><span class="line">				ans += t1 * ok;</span><br><span class="line">				ok = ok * 10;</span><br><span class="line">			&#125;</span><br><span class="line">			num1 = num1 / 10;</span><br><span class="line">			num2 = num2 / 10;</span><br><span class="line">			if(num1 == 0)&#123;</span><br><span class="line">				add += ans % 998244353;</span><br><span class="line">				break;</span><br><span class="line">			&#125;		</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	add = add * n % 998244353;</span><br><span class="line">	printf(&quot;%lld\n&quot;,add);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -232,6 +234,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贡献</a>
         		</li>
       		
 		</ul>
@@ -457,14 +463,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">multiset</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
@@ -485,7 +483,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
+                <a href="javascript:void(0)" class="js-tag color4">multiset</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,11 +499,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">二分统计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贡献</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,15 +531,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">转化思想</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">进制转化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
