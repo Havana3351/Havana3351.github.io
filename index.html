@@ -152,6 +152,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ACM训练赛4-C题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/30/ACM训练赛4-C题解/">ACM训练赛4-C题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/30/ACM训练赛4-C题解/" class="archive-article-date">
+  	<time datetime="2019-07-30T03:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/315492#problem/C" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given an array a consisting of n integers. Each ai is one of the six following numbers: 4,8,15,16,23,42.</p>
+<p>Your task is to remove the minimum number of elements to make this array good.</p>
+<p>An array of length k is called good if k is divisible by 6 and it is possible to split it into k6 subsequences 4,8,15,16,23,42.</p>
+<p>Examples of good arrays:</p>
+<p>[4,8,15,16,23,42] (the whole array is a required sequence);<br>[4,8,4,15,16,8,23,15,16,42,23,42] (the first sequence is formed from first, second, fourth, fifth, seventh and tenth elements and the second one is formed from remaining elements);<br>[] (the empty array is good).<br>Examples of bad arrays:</p>
+<p>[4,8,15,16,42,23] (the order of elements should be exactly 4,8,15,16,23,42);<br>[4,8,15,16,23,42,4] (the length of the array is not divisible by 6);<br>[4,8,15,16,23,42,4,8,15,16,23,23] (the first sequence can be formed from first six elements but the remaining array cannot form the required sequence).</p>
+<details>
+<summary>展开查看</summary>
+
+<p>Input<br>The first line of the input contains one integer n (1≤n≤5⋅105) — the number of elements in a.</p>
+<p>The second line of the input contains n integers a1,a2,…,an (each ai is one of the following numbers: 4,8,15,16,23,42), where ai is the i-th element of a.</p>
+<p>Output<br>Print one integer — the minimum number of elements you have to remove to obtain a good array.</p>
+<h1 id="初步思路"><a href="#初步思路" class="headerlink" title="初步思路"></a>初步思路</h1><blockquote>
+<p>其实一看到这个题的时候我就知道要模拟，按照题目要求进行模拟就行，但是我没有抽象，我真的就按照题目的方式模拟，十分复杂，也十分难写。。。这个沙雕方法花了我两个小时！！我 <del>难过</del> 开心的不行。最后运算还超时了！！</p>
+</blockquote>
+<p><img src="http://i1.fuimg.com/694914/cf73e70468ed2610.jpg" alt="Markdown"></p>
+<h1 id="AC思路"><a href="#AC思路" class="headerlink" title="AC思路"></a>AC思路</h1><blockquote>
+<p>其实也是模拟，只不过进行了抽象，很巧妙！我们不用把这个要求的数字串组装起来，也不用把已经用来组成数字串的数字删掉。我们只要进行判断，当这个数不是4时，只要这个数的前一个数数量比这个数现有数量大，我们就给这个数的数量加1。因为是从数组头进行遍历的，所以这也满足了，数字串从小到大的位置要求！！</p>
+</blockquote>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxx = 500010;</span><br><span class="line">int a[maxx];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    while(cin&gt;&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        int i;</span><br><span class="line">        for(i=0; i&lt;n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        int count = 0;</span><br><span class="line">        int s1,s2,s3,s4,s5,s6;;</span><br><span class="line">        s1 = s2 = s3 = s4 = s5 = s6 = 0; </span><br><span class="line">        for(i=0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(a[i]==4)</span><br><span class="line">                s1++;</span><br><span class="line">            else if(a[i]==8 &amp;&amp; s1&gt;s2)    //只有4出现的个数大于8出现的个数时s2才能++</span><br><span class="line">                s2++;</span><br><span class="line">            else if(a[i]==15 &amp;&amp; s2&gt;s3)  </span><br><span class="line">                s3++;</span><br><span class="line">            else if(a[i]==16 &amp;&amp; s3&gt;s4)</span><br><span class="line">                s4++;</span><br><span class="line">            else if(a[i]==23 &amp;&amp; s4&gt;s5)</span><br><span class="line">                s5++;</span><br><span class="line">            else if(a[i]==42 &amp;&amp; s5&gt;s6)</span><br><span class="line">                s6++;</span><br><span class="line">            if(s1 &amp;&amp; s2 &amp;&amp; s3 &amp;&amp; s4 &amp;&amp; s5 &amp;&amp; s6)</span><br><span class="line">            &#123;</span><br><span class="line">                s1--;</span><br><span class="line">                s2--;</span><br><span class="line">                s3--;</span><br><span class="line">                s4--;</span><br><span class="line">                s5--;</span><br><span class="line">                s6--;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,n-count*6);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/weixin_44694282/article/details/93527416" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44694282/article/details/93527416</a></p>
+<p><img src="http://i2.tiimg.com/694914/78b390fe8bde5d3f.jpg" alt="Markdown"></p>
+</details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">抽象</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/30/ACM训练赛4-C题解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-E-Median-String-题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -300,11 +400,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vector</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学问题</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学问题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vector</a>
         		</li>
       		
 		</ul>
@@ -493,11 +593,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -601,11 +701,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -824,11 +924,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习清单</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习清单</a>
         		</li>
       		
 		</ul>
@@ -1057,101 +1157,6 @@
 
 
   
-    <article id="post-ACM训练赛2-F题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/25/ACM训练赛2-F题解/">ACM训练赛2-F题解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/25/ACM训练赛2-F题解/" class="archive-article-date">
-  	<time datetime="2019-07-25T12:19:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313957#problem/F" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given two arrays a and b, both of length n. All elements of both arrays are from 0 to n−1.</p>
-<p>You can reorder elements of the array b (if you want, you may leave the order of elements as it is). After that, let array c be the array of length n, the i-th element of this array is ci=(ai+bi)%n, where x%y is x modulo y.</p>
-<p>Your task is to reorder elements of the array b to obtain the lexicographically minimum possible array c.</p>
-<p>Array x of length n is lexicographically less than array y of length n, if there exists such i (1≤i≤n), that xi&lt;yi, and for any j (1≤j&lt;i) xj=yj.</p>
-<details>
-<summary>展开查看</summary>
-
-<p>Input<br>The first line of the input contains one integer n (1≤n≤2⋅105) — the number of elements in a, b and c.</p>
-<p>The second line of the input contains n integers a1,a2,…,an (0≤ai&lt;n), where ai is the i-th element of a.</p>
-<p>The third line of the input contains n integers b1,b2,…,bn (0≤bi&lt;n), where bi is the i-th element of b.</p>
-<p>Output<br>Print the lexicographically minimum possible array c. Recall that your task is to reorder elements of the array b and obtain the lexicographically minimum possible array c, where the i-th element of c is ci=(ai+bi)%n.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
-<p>因为要求ai+bi % n为字典序，所以就要求取余后尽可能的小，所以先在b中找n-ai，如果没有找第一个比它大的数。<del>我也不知道为啥要找大的，这是个数学问题</del></p>
-</blockquote>
-<p><img src="http://i1.fuimg.com/694914/74c27293faf87e39.jpg" alt="Markdown"></p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn = 200010;</span><br><span class="line">vector&lt;int&gt; v;</span><br><span class="line">multiset&lt;int&gt; st;</span><br><span class="line">int a[maxn];</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		v.push_back(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		st.insert(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		auto u = st.lower_bound(n-v[i]);</span><br><span class="line">		//利用二分查找返回第一个大于等于参数的位置</span><br><span class="line">		if(u == st.end())</span><br><span class="line">			u = st.begin();</span><br><span class="line">		a[i] = (*u+v[i]) % n;</span><br><span class="line">		st.erase(u); </span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		if(i == 0)</span><br><span class="line">			cout &lt;&lt; a[0];</span><br><span class="line">		else</span><br><span class="line">			cout &lt;&lt; &quot; &quot; &lt;&lt; a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://www.cnblogs.com/letlifestop/p/10924177.html" target="_blank" rel="noopener">https://www.cnblogs.com/letlifestop/p/10924177.html</a></p>
-</details>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">multiset</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/25/ACM训练赛2-F题解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1249,18 +1254,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vector</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">失败锦集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">multiset</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学问题</a>
               </li>
              
@@ -1270,10 +1263,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1289,23 +1278,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">二分统计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vector</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抽象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">失败锦集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">multiset</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1317,7 +1314,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
+                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">书籍推荐</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1325,7 +1330,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">书籍推荐</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -152,6 +152,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ACM训练赛2-F题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/25/ACM训练赛2-F题解/">ACM训练赛2-F题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/25/ACM训练赛2-F题解/" class="archive-article-date">
+  	<time datetime="2019-07-25T12:19:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313957#problem/F" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given two arrays a and b, both of length n. All elements of both arrays are from 0 to n−1.</p>
+<p>You can reorder elements of the array b (if you want, you may leave the order of elements as it is). After that, let array c be the array of length n, the i-th element of this array is ci=(ai+bi)%n, where x%y is x modulo y.</p>
+<p>Your task is to reorder elements of the array b to obtain the lexicographically minimum possible array c.</p>
+<p>Array x of length n is lexicographically less than array y of length n, if there exists such i (1≤i≤n), that xi&lt;yi, and for any j (1≤j&lt;i) xj=yj.</p>
+<details>
+<summary>展开查看</summary>
+
+<p>Input<br>The first line of the input contains one integer n (1≤n≤2⋅105) — the number of elements in a, b and c.</p>
+<p>The second line of the input contains n integers a1,a2,…,an (0≤ai&lt;n), where ai is the i-th element of a.</p>
+<p>The third line of the input contains n integers b1,b2,…,bn (0≤bi&lt;n), where bi is the i-th element of b.</p>
+<p>Output<br>Print the lexicographically minimum possible array c. Recall that your task is to reorder elements of the array b and obtain the lexicographically minimum possible array c, where the i-th element of c is ci=(ai+bi)%n.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
+<p>因为要求ai+bi % n为字典序，所以就要求取余后尽可能的小，所以先在b中找n-ai，如果没有找第一个比它大的数。<del>我也不知道为啥要找大的，这是个数学问题</del></p>
+</blockquote>
+<p><img src="http://i1.fuimg.com/694914/74c27293faf87e39.jpg" alt="Markdown"></p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn = 200010;</span><br><span class="line">vector&lt;int&gt; v;</span><br><span class="line">multiset&lt;int&gt; st;</span><br><span class="line">int a[maxn];</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		v.push_back(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		st.insert(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		auto u = st.lower_bound(n-v[i]);</span><br><span class="line">		//利用二分查找返回第一个大于等于参数的位置</span><br><span class="line">		if(u == st.end())</span><br><span class="line">			u = st.begin();</span><br><span class="line">		a[i] = (*u+v[i]) % n;</span><br><span class="line">		st.erase(u); </span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		if(i == 0)</span><br><span class="line">			cout &lt;&lt; a[0];</span><br><span class="line">		else</span><br><span class="line">			cout &lt;&lt; &quot; &quot; &lt;&lt; a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://www.cnblogs.com/letlifestop/p/10924177.html" target="_blank" rel="noopener">https://www.cnblogs.com/letlifestop/p/10924177.html</a></p>
+</details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">multiset</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/25/ACM训练赛2-F题解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-先记住这个题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -959,98 +1054,6 @@
 
 
   
-    <article id="post-acm训练赛-C题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/23/acm训练赛-C题解/">acm训练赛-Computer Game</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/23/acm训练赛-C题解/" class="archive-article-date">
-  	<time datetime="2019-07-23T00:42:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313088#problem/C" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of the game) is k.</p>
-<p>During each turn Vova can choose what to do:</p>
-<p>If the current charge of his laptop battery is strictly greater than a, Vova can just play, and then the charge of his laptop battery will decrease by a;<br>if the current charge of his laptop battery is strictly greater than b (b&lt;a), Vova can play and charge his laptop, and then the charge of his laptop battery will decrease by b;<br>if the current charge of his laptop battery is less than or equal to a and b at the same time then Vova cannot do anything and loses the game.<br>Regardless of Vova’s turns the charge of the laptop battery is always decreases.</p>
-<p>Vova wants to complete the game (Vova can complete the game if after each of n turns the charge of the laptop battery is strictly greater than 0). Vova has to play exactly n turns. Among all possible ways to complete the game, Vova wants to choose the one where the number of turns when he just plays (first type turn) is the maximum possible. It is possible that Vova cannot complete the game at all.</p>
-<p>Your task is to find out the maximum possible number of turns Vova can just play (make the first type turn) or report that Vova cannot complete the game.</p>
-<p>You have to answer q independent queries.</p>
-<details>
-<summary>展开查看</summary>
-
-<p>Input<br>The first line of the input contains one integer q (1≤q≤105) — the number of queries. Each query is presented by a single line.</p>
-<p>The only line of the query contains four integers k,n,a and b (1≤k,n≤109,1≤b&lt;a≤109) — the initial charge of Vova’s laptop battery, the number of turns in the game and values a and b, correspondingly.</p>
-<p>Output<br>For each query print one integer: -1 if Vova cannot complete the game or the maximum number of turns Vova can just play (make the first type turn) otherwise.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这是一个比较简单的数学问题，我们先根据题目用if语句判断最简单的不能玩电脑的情况。然后在能玩电脑的情况下，先用所有的回合都去待机，然后算出玩与待机之间的电量差，在剩余电量中扣除一点作为备用，剩下的电量转换去玩电脑。最后比较我们算出的次数与要求回合的大小，选小的。(防止溢出)。</p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">long long int k, n, a, b;</span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%lld%lld%lld%lld&quot;, &amp;k, &amp;n, &amp;a, &amp;b);</span><br><span class="line">	if (k&lt;=n*b)  //当要求回合数连待机也不能满足时输出-1 </span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;-1\n&quot;);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	long long int restMax = k - n*b;  </span><br><span class="line">        //先认为所有回合都待机 算出多余的电量 </span><br><span class="line">	long long int r = a - b;       </span><br><span class="line">        //将待机与使用的电量差算出来 </span><br><span class="line">	long long int w = (restMax-1) / r; </span><br><span class="line">        //留一格备用电，其他转化为玩电脑 </span><br><span class="line">	w = min(w, n);              </span><br><span class="line">      //这一句解决了很多问题，w&lt;n时为 w,w &gt;= n时 都为 n 不会越界 </span><br><span class="line">	printf(&quot;%lld\n&quot;, w);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int t;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;t);</span><br><span class="line">	while(t--)</span><br><span class="line">		test();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/king9666/article/details/94048465" target="_blank" rel="noopener">https://blog.csdn.net/king9666/article/details/94048465</a></p>
-<ul>
-<li>CSDN博客</li>
-</ul>
-</details>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学问题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/23/acm训练赛-C题解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1148,18 +1151,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vector</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">失败锦集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">multiset</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学问题</a>
               </li>
              
@@ -1169,10 +1160,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1188,23 +1175,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">二分统计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vector</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抽象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">失败锦集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">multiset</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,7 +1211,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
+                <a href="javascript:void(0)" class="js-tag color5">插板问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">书籍推荐</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1224,7 +1227,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">书籍推荐</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
               </li>
              
               <li class="article-tag-list-item">
