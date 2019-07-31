@@ -152,19 +152,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-D1. RGB Substring (easy version)-题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java书籍推荐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/D1. RGB Substring (easy version)-题解/">D1. RGB Substring (easy version)-题解</a>
+      <a class="article-title" href="/2019/07/26/Java书籍推荐/">Java 学习书籍推荐</a>
     </h1>
   
 
         
-        <a href="/2019/07/26/D1. RGB Substring (easy version)-题解/" class="archive-article-date">
+        <a href="/2019/07/26/Java书籍推荐/" class="archive-article-date">
   	<time datetime="2019-07-26T06:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
 </a>
         
@@ -172,22 +172,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="http://codeforces.com/problemset/problem/1196/D1" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given a string s consisting of n characters, each character is ‘R’, ‘G’ or ‘B’.</p>
-<p>You are also given an integer k. Your task is to change the minimum number of characters in the initial string s so that after the changes there will be a string of length k that is a substring of s, and is also a substring of the infinite string “RGBRGBRGB …”.</p>
-<p>A string a is a substring of string b if there exists a positive integer i such that a1=bi, a2=bi+1, a3=bi+2, …, a|a|=bi+|a|−1. For example, strings “GBRG”, “B”, “BR” are substrings of the infinite string “RGBRGBRGB …” while “GR”, “RGR” and “GGG” are not.</p>
-<p>You have to answer q independent queries.</p>
+        <h1 id="学习书籍推荐"><a href="#学习书籍推荐" class="headerlink" title="学习书籍推荐"></a>学习书籍推荐</h1><ul>
+<li>Java 编程思想(第四版)</li>
+</ul>
+<blockquote>
+<p>这本书推荐有一定基础再看</p>
+</blockquote>
 <details>
 <summary>展开查看</summary>
 
-<p>Input<br>The first line of the input contains one integer q (1≤q≤2000) — the number of queries. Then q queries follow.</p>
-<p>The first line of the query contains two integers n and k (1≤k≤n≤2000) — the length of the string s and the length of the substring.</p>
-<p>The second line of the query contains a string s consisting of n characters ‘R’, ‘G’ and ‘B’.</p>
-<p>It is guaranteed that the sum of n over all queries does not exceed 2000 (∑n≤2000).</p>
-<p>Output<br>For each query print one integer — the minimum number of characters you need to change in the initial string s so that after changing there will be a substring of length k in s that is also a substring of the infinite string “RGBRGBRGB …”.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>没什么特别的方法，数据这么小直接暴力。基本想法就是对字符串进行遍历，遇见不符合规律的直接改掉，有三种开头就遍历三次。。。最后取改的最少的。</p>
-<p>这个算法的时间复杂度为：O((n-k)<em>k</em>q)。数据小所以才能过哦！！！</p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int q,n,k;</span><br><span class="line">	cin &gt;&gt; q;</span><br><span class="line">	string s1,s2;</span><br><span class="line">	s2 = &quot;RGB&quot;;</span><br><span class="line">	for(int i=0;i&lt;q;i++)&#123;</span><br><span class="line">		int ans=3000;</span><br><span class="line">		int flag,t;</span><br><span class="line">		cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">		cin &gt;&gt; s1;</span><br><span class="line">		for(int j=0;j&lt;=n-k;j++)&#123;</span><br><span class="line">			bool ok = false;</span><br><span class="line">			for(int z=0;z&lt;3;z++)&#123;</span><br><span class="line">			//三种开头，遍历三次 </span><br><span class="line">				t = 0;</span><br><span class="line">				flag = z;</span><br><span class="line">				if(s1[j] != s2[flag])</span><br><span class="line">					t++;</span><br><span class="line">				for(int z=1;z&lt;k;z++)&#123;</span><br><span class="line">					flag++;  //根据开头确定下一个字母 </span><br><span class="line">					flag %= 3; //取余保证不会越界 </span><br><span class="line">					if(s1[j+z] != s2[flag])</span><br><span class="line">						t++;</span><br><span class="line">				&#125;</span><br><span class="line">				if(t &lt; ans)</span><br><span class="line">					ans = t;</span><br><span class="line">				if(ans == 0)&#123;</span><br><span class="line">					ok = true; </span><br><span class="line">					//剪枝 </span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if(ok)</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="并发编程推荐"><a href="#并发编程推荐" class="headerlink" title="并发编程推荐"></a>并发编程推荐</h2><ul>
+<li>Java并发编程实战(初学不用看，做企业级开发有用，多线程精髓)</li>
+</ul>
+<h1 id="JVM推荐"><a href="#JVM推荐" class="headerlink" title="JVM推荐"></a>JVM推荐</h1><ul>
+<li>深入理解Java虚拟机</li>
+</ul>
+<h1 id="培养函数式编程思维推荐"><a href="#培养函数式编程思维推荐" class="headerlink" title="培养函数式编程思维推荐"></a>培养函数式编程思维推荐</h1><ul>
+<li>函数式编程思维</li>
+</ul>
+<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><ul>
+<li>TCP/IP 详解 卷1：协议（比较难懂，建议边查资料边看）</li>
+</ul>
+<h1 id="框架书籍推荐"><a href="#框架书籍推荐" class="headerlink" title="框架书籍推荐"></a>框架书籍推荐</h1><h2 id="快餐书"><a href="#快餐书" class="headerlink" title="快餐书"></a>快餐书</h2><ul>
+<li>spring MVC + MyBatis开发从入门到项目实践</li>
+</ul>
+<h2 id="稍微高端一点的"><a href="#稍微高端一点的" class="headerlink" title="稍微高端一点的"></a>稍微高端一点的</h2><ul>
+<li>Spring 技术内幕（需要有一定基础）</li>
+</ul>
+<h1 id="中间件书籍推荐"><a href="#中间件书籍推荐" class="headerlink" title="中间件书籍推荐"></a>中间件书籍推荐</h1><h2 id="搜索引擎-数据库"><a href="#搜索引擎-数据库" class="headerlink" title="搜索引擎 / 数据库"></a>搜索引擎 / 数据库</h2><ul>
+<li>Elasticsearch服务器开发（书有点老）</li>
+<li>Redis入门指南</li>
+</ul>
 </details>
       
 
@@ -201,7 +216,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">暴力</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
         		</li>
       		
 		</ul>
@@ -211,7 +230,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/26/D1. RGB Substring (easy version)-题解/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/26/Java书籍推荐/">展开全文 >></a>
         </p>
       
 
@@ -331,11 +350,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习清单</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习清单</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -1175,15 +1194,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">二分统计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1195,11 +1214,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贡献</a>
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
+                <a href="javascript:void(0)" class="js-tag color3">贡献</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1211,7 +1230,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">书籍推荐</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,7 +1238,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
+                <a href="javascript:void(0)" class="js-tag color5">书籍推荐</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1231,15 +1250,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">multiset</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
               </li>
              
               <li class="article-tag-list-item">
