@@ -152,6 +152,116 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-写了这么多题解再来写写错误演示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/23/写了这么多题解再来写写错误演示/">写了这么多题解再来写写错误演示</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/23/写了这么多题解再来写写错误演示/" class="archive-article-date">
+  	<time datetime="2019-07-23T08:29:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="菜是原罪"><a href="#菜是原罪" class="headerlink" title="菜是原罪"></a>菜是原罪</h1><h2 id="菜是原罪-1"><a href="#菜是原罪-1" class="headerlink" title="菜是原罪"></a>菜是原罪</h2><h3 id="菜是原罪-2"><a href="#菜是原罪-2" class="headerlink" title="菜是原罪"></a>菜是原罪</h3><p><img src="http://i1.fuimg.com/694914/ad6f9043a76d3aa4.jpg" alt="Markdown"></p>
+<details>
+<summary>展开查看</summary>
+
+<h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313088#problem/F" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>One important contest will take place on the most famous programming platform (Topforces) very soon!</p>
+<p>The authors have a pool of n problems and should choose at most three of them into this contest. The prettiness of the i-th problem is ai. The authors have to compose the most pretty contest (in other words, the cumulative prettinesses of chosen problems should be maximum possible).</p>
+<p>But there is one important thing in the contest preparation: because of some superstitions of authors, the prettinesses of problems cannot divide each other. In other words, if the prettinesses of chosen problems are x,y,z, then x should be divisible by neither y, nor z, y should be divisible by neither x, nor z and z should be divisible by neither x, nor y. If the prettinesses of chosen problems are x and y then neither x should be divisible by y nor y should be divisible by x. Any contest composed from one problem is considered good.</p>
+<p>Your task is to find out the maximum possible total prettiness of the contest composed of at most three problems from the given pool.</p>
+<p>You have to answer q independent queries.</p>
+<p>If you are Python programmer, consider using PyPy instead of Python when you submit your code.</p>
+<p>Input<br>The first line of the input contains one integer q (1≤q≤2⋅105) — the number of queries.</p>
+<p>The first line of the query contains one integer n (1≤n≤2⋅105) — the number of problems.</p>
+<p>The second line of the query contains n integers a1,a2,…,an (2≤ai≤2⋅105), where ai is the prettiness of the i-th problem.</p>
+<p>It is guaranteed that the sum of n over all queries does not exceed 2⋅105.</p>
+<p>Output<br>For each query print one integer — the maximum possible cumulative prettiness of the contest composed of at most three problems from the given pool of problems in the query.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>哪有什么解题思路，直接暴力遍历。在2400的难度系数面前。。。。。</p>
+<p>毫无思路，只能暴力。</p>
+<p><img src="http://i2.tiimg.com/694914/9da62a4138991dff.jpg" alt="Markdown"></p>
+<h1 id="超时代码演示"><a href="#超时代码演示" class="headerlink" title="超时代码演示"></a>超时代码演示</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">bool cmp(int x,int y)&#123;</span><br><span class="line">	return x &gt; y; </span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int q;</span><br><span class="line">	cin &gt;&gt; q;</span><br><span class="line">	for(int i=0;i&lt;q;i++)&#123;</span><br><span class="line">		int n;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		vector&lt;int&gt; v(n);</span><br><span class="line">		for(int j=0;j&lt;n;j++)&#123;</span><br><span class="line">			int b;</span><br><span class="line">			cin &gt;&gt; b;</span><br><span class="line">			v.push_back(b);</span><br><span class="line">		&#125;</span><br><span class="line">		sort(v.begin(),v.end(),cmp);</span><br><span class="line">		int num[3]=&#123;0&#125;;</span><br><span class="line">		int max1 = 0;</span><br><span class="line">		for(int j=0;j&lt;n;j++)&#123;</span><br><span class="line">			num[0] = v[j];</span><br><span class="line">			int t = 0;</span><br><span class="line">			for(int k=j+1;k&lt;n;k++)&#123;</span><br><span class="line">				if(t == 0)&#123;</span><br><span class="line">					if(num[0] % v[k] != 0)</span><br><span class="line">						num[++t] = v[k];</span><br><span class="line">				&#125;	</span><br><span class="line">				else if(t == 1)</span><br><span class="line">					if(num[0] % v[k] != 0 &amp;&amp; num[1] % v[k] != 0)</span><br><span class="line">						num[++t] = v[k];</span><br><span class="line">				else if(t == 2)</span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">			int tmp = num[0]+num[1]+num[2];</span><br><span class="line">			max1 = max(max1,tmp);</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; max1 &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="你看看这是人干的事吗"><a href="#你看看这是人干的事吗" class="headerlink" title="你看看这是人干的事吗"></a>你看看这是人干的事吗</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">200000</span><br><span class="line">16 7 24 27 5 6 13 3 3 3 19 18 22 9 11 5 4 3 2 5 28 5 6 49 4 14 6 4 37 6 6 3 3 7 23 6 5 29 6 5 2 20 16 3 26 25 79 10 14 2 5 28 15 2 11 2 7 16 2 5 9 5 2 51 10 22 11 2 10 26 22 5 7 8 16 6 6 10 7 7 7 3 12 23 50 3 4 20 12 11 4 16 11 26 13 7 2 6 5 17 3 8 10 3 6 8 20 2 5 40 28 5 13 10 8 10 19 5 2 8 5 23 10 20 5 2 2 11 2 3 5 4 4 9 3 3 2 5 3 5 4 6 29 39 3 31 9 19 6 6 44 9 18 3 7 37 2 15 14 42 30 5 59 6 21 6 22 10 21 13 3 4 8 3 7 13 4 2 42 7 3 29 30 4 4 4 8 22 3 14 11 7 33 15 18 25 41 6 6 12 7 4 7 60 11 1 ...</span><br></pre></td></tr></table></figure>
+
+<p>有200000个输入！！3秒算完。时间复杂度O(n^3)的我瑟瑟发抖。</p>
+<p><img src="http://i1.fuimg.com/694914/ad6f9043a76d3aa4.jpg" alt="Markdown"></p>
+<h1 id="吾王美如画！！！"><a href="#吾王美如画！！！" class="headerlink" title="吾王美如画！！！"></a>吾王美如画！！！</h1><p><img src="http://i1.fuimg.com/694914/fecfedaac9ae550e.jpg" alt="Markdown"></p>
+</details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vector</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">遍历</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">超时演示</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">暴力推演</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/23/写了这么多题解再来写写错误演示/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-acm训练赛-E题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -786,18 +896,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抽象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vector</a>
               </li>
              
@@ -810,19 +908,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存超限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抽象</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -838,19 +932,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存超限</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贡献</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -862,7 +968,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">

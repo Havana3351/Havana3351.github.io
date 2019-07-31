@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 转化思想 | zgy&#39;s blog</title>
+  <title>D2. Submarine in the Rybinsk Sea (hard edition) | zgy&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zgy&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/转化思想/index.html">
+  <meta name="description" content="记住这个题题目详情hard 与 easy其实只是在输入上不太一样。hard版的数组元素位数是不固定的。这就导致每一个数与不同位数的数组合时贡献值不同。  展开查看  解题思路 解题思路其实和easy版差不多，都是找规律，算贡献值然后加起来乘倍数。但是因为数组中元素的位数是不一样的，所以我们要算一个数与不同位数的数组合时的贡献值！！方法虽然想到了但是我试着写了下代码，发现很长很麻烦    下面先贴上">
+<meta name="keywords" content="模拟,贡献">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D2. Submarine in the Rybinsk Sea (hard edition)">
+<meta property="og:url" content="http://yoursite.com/2019/07/31/D2-Submarine-in-the-Rybinsk-Sea-hard-edition/index.html">
 <meta property="og:site_name" content="zgy&#39;s blog">
+<meta property="og:description" content="记住这个题题目详情hard 与 easy其实只是在输入上不太一样。hard版的数组元素位数是不固定的。这就导致每一个数与不同位数的数组合时贡献值不同。  展开查看  解题思路 解题思路其实和easy版差不多，都是找规律，算贡献值然后加起来乘倍数。但是因为数组中元素的位数是不一样的，所以我们要算一个数与不同位数的数组合时的贡献值！！方法虽然想到了但是我试着写了下代码，发现很长很麻烦    下面先贴上">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i1.fuimg.com/694914/cf73e70468ed2610.jpg">
+<meta property="og:updated_time" content="2019-07-31T02:26:49.791Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zgy&#39;s blog">
+<meta name="twitter:title" content="D2. Submarine in the Rybinsk Sea (hard edition)">
+<meta name="twitter:description" content="记住这个题题目详情hard 与 easy其实只是在输入上不太一样。hard版的数组元素位数是不固定的。这就导致每一个数与不同位数的数组合时贡献值不同。  展开查看  解题思路 解题思路其实和easy版差不多，都是找规律，算贡献值然后加起来乘倍数。但是因为数组中元素的位数是不一样的，所以我们要算一个数与不同位数的数组合时的贡献值！！方法虽然想到了但是我试着写了下代码，发现很长很麻烦    下面先贴上">
+<meta name="twitter:image" content="http://i1.fuimg.com/694914/cf73e70468ed2610.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zgy&#39;s blog" type="application/atom+xml">
   
@@ -150,64 +157,213 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-D2-Submarine-in-the-Rybinsk-Sea-hard-edition" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/29/E-Median-String-题解/" class="archive-article-date">
-  	<time datetime="2019-07-29T05:43:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/29/E-Median-String-题解/">E. Median String-题解</a>
+    <h1 class="article-title" itemprop="name">
+      D2. Submarine in the Rybinsk Sea (hard edition)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/31/D2-Submarine-in-the-Rybinsk-Sea-hard-edition/" class="archive-article-date">
+  	<time datetime="2019-07-31T02:14:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="记住这个题"><a href="#记住这个题" class="headerlink" title="记住这个题"></a><a href="https://codeforces.com/problemset/problem/1195/D2" target="_blank" rel="noopener">记住这个题</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>hard 与 easy其实只是在输入上不太一样。hard版的数组元素位数是不固定的。这就导致每一个数与不同位数的数组合时贡献值不同。</p>
+<details>
+<summary>展开查看</summary>
+
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
+<p>解题思路其实和easy版差不多，都是找规律，算贡献值然后加起来乘倍数。但是因为数组中元素的位数是不一样的，所以我们要算一个数与不同位数的数组合时的贡献值！！<del>方法虽然想到了但是我试着写了下代码，发现很长很麻烦</del></p>
+</blockquote>
+<p><img src="http://i1.fuimg.com/694914/cf73e70468ed2610.jpg" alt="Markdown"></p>
+<blockquote>
+<p>下面先贴上大牛的极短AC代码</p>
+</blockquote>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 1e5 + 10;</span><br><span class="line">const int mod = 998244353;</span><br><span class="line">typedef long long ll;</span><br><span class="line">int num[maxn];</span><br><span class="line">int n,a[maxn];</span><br><span class="line">int getlen(int x) &#123;</span><br><span class="line">	int l = 0;</span><br><span class="line">	while(x) &#123;</span><br><span class="line">		l++;</span><br><span class="line">		x /= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	return l;</span><br><span class="line">&#125;</span><br><span class="line">ll solve(int x,int len,int sz) &#123;</span><br><span class="line">	ll tmp = 1;</span><br><span class="line">	int cur = 0;</span><br><span class="line">	ll ans = 0; </span><br><span class="line">	while(x) &#123;</span><br><span class="line">		cur++;</span><br><span class="line">		int p = x % 10;</span><br><span class="line">		x /= 10;</span><br><span class="line">		if(cur &lt;= len) &#123;</span><br><span class="line">			ans = (ans + ((p * tmp % mod + (p * tmp % mod) * 10 % mod) % mod) * sz % mod) % mod;</span><br><span class="line">			tmp = tmp * 100 % mod;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			ans = (ans + (((2 * p) % mod) * tmp % mod) * sz % mod) % mod;</span><br><span class="line">			tmp = tmp * 10 % mod;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">		num[getlen(a[i])]++;</span><br><span class="line">	&#125;</span><br><span class="line">	ll res = 0;</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		for(int j = 1; j &lt;= 10; j++)</span><br><span class="line">			if(num[j])</span><br><span class="line">				res = (res + solve(a[i],j,num[j])) % mod;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%lld\n&quot;,res);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/qq_41997978/article/details/96474605" target="_blank" rel="noopener">https://blog.csdn.net/qq_41997978/article/details/96474605</a></p>
+</details>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifu.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">转化思想</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">进制转化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贡献</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/31/D2-Submarine-in-the-Rybinsk-Sea-hard-edition/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/30/D1-Submarine-in-the-Rybinsk-Sea-easy-edition-题解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">D1. Submarine in the Rybinsk Sea (easy edition)-题解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#记住这个题"><span class="toc-number">1.</span> <span class="toc-text">记住这个题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题目详情"><span class="toc-number">2.</span> <span class="toc-text">题目详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解题思路"><span class="toc-number">3.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码详情"><span class="toc-number">4.</span> <span class="toc-text">代码详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#致谢"><span class="toc-number">5.</span> <span class="toc-text">致谢</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2019/07/31/D2-Submarine-in-the-Rybinsk-Sea-hard-edition/", 
+    sourceId: "D2-Submarine-in-the-Rybinsk-Sea-hard-edition",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -230,9 +386,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

@@ -152,6 +152,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-D2-Submarine-in-the-Rybinsk-Sea-hard-edition" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/31/D2-Submarine-in-the-Rybinsk-Sea-hard-edition/">D2. Submarine in the Rybinsk Sea (hard edition)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/31/D2-Submarine-in-the-Rybinsk-Sea-hard-edition/" class="archive-article-date">
+  	<time datetime="2019-07-31T02:14:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="记住这个题"><a href="#记住这个题" class="headerlink" title="记住这个题"></a><a href="https://codeforces.com/problemset/problem/1195/D2" target="_blank" rel="noopener">记住这个题</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>hard 与 easy其实只是在输入上不太一样。hard版的数组元素位数是不固定的。这就导致每一个数与不同位数的数组合时贡献值不同。</p>
+<details>
+<summary>展开查看</summary>
+
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
+<p>解题思路其实和easy版差不多，都是找规律，算贡献值然后加起来乘倍数。但是因为数组中元素的位数是不一样的，所以我们要算一个数与不同位数的数组合时的贡献值！！<del>方法虽然想到了但是我试着写了下代码，发现很长很麻烦</del></p>
+</blockquote>
+<p><img src="http://i1.fuimg.com/694914/cf73e70468ed2610.jpg" alt="Markdown"></p>
+<blockquote>
+<p>下面先贴上大牛的极短AC代码</p>
+</blockquote>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 1e5 + 10;</span><br><span class="line">const int mod = 998244353;</span><br><span class="line">typedef long long ll;</span><br><span class="line">int num[maxn];</span><br><span class="line">int n,a[maxn];</span><br><span class="line">int getlen(int x) &#123;</span><br><span class="line">	int l = 0;</span><br><span class="line">	while(x) &#123;</span><br><span class="line">		l++;</span><br><span class="line">		x /= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	return l;</span><br><span class="line">&#125;</span><br><span class="line">ll solve(int x,int len,int sz) &#123;</span><br><span class="line">	ll tmp = 1;</span><br><span class="line">	int cur = 0;</span><br><span class="line">	ll ans = 0; </span><br><span class="line">	while(x) &#123;</span><br><span class="line">		cur++;</span><br><span class="line">		int p = x % 10;</span><br><span class="line">		x /= 10;</span><br><span class="line">		if(cur &lt;= len) &#123;</span><br><span class="line">			ans = (ans + ((p * tmp % mod + (p * tmp % mod) * 10 % mod) % mod) * sz % mod) % mod;</span><br><span class="line">			tmp = tmp * 100 % mod;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			ans = (ans + (((2 * p) % mod) * tmp % mod) * sz % mod) % mod;</span><br><span class="line">			tmp = tmp * 10 % mod;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">		num[getlen(a[i])]++;</span><br><span class="line">	&#125;</span><br><span class="line">	ll res = 0;</span><br><span class="line">	for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		for(int j = 1; j &lt;= 10; j++)</span><br><span class="line">			if(num[j])</span><br><span class="line">				res = (res + solve(a[i],j,num[j])) % mod;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%lld\n&quot;,res);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/qq_41997978/article/details/96474605" target="_blank" rel="noopener">https://blog.csdn.net/qq_41997978/article/details/96474605</a></p>
+</details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贡献</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/31/D2-Submarine-in-the-Rybinsk-Sea-hard-edition/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-D1-Submarine-in-the-Rybinsk-Sea-easy-edition-题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -823,114 +914,6 @@
 
 
   
-    <article id="post-Java书籍推荐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/Java书籍推荐/">Java 学习书籍推荐</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/26/Java书籍推荐/" class="archive-article-date">
-  	<time datetime="2019-07-26T06:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="学习书籍推荐"><a href="#学习书籍推荐" class="headerlink" title="学习书籍推荐"></a>学习书籍推荐</h1><ul>
-<li>Java 编程思想(第四版)</li>
-</ul>
-<blockquote>
-<p>这本书推荐有一定基础再看</p>
-</blockquote>
-<details>
-<summary>展开查看</summary>
-
-<h2 id="并发编程推荐"><a href="#并发编程推荐" class="headerlink" title="并发编程推荐"></a>并发编程推荐</h2><ul>
-<li>Java并发编程实战(初学不用看，做企业级开发有用，多线程精髓)</li>
-</ul>
-<h1 id="JVM推荐"><a href="#JVM推荐" class="headerlink" title="JVM推荐"></a>JVM推荐</h1><ul>
-<li>深入理解Java虚拟机</li>
-</ul>
-<h1 id="培养函数式编程思维推荐"><a href="#培养函数式编程思维推荐" class="headerlink" title="培养函数式编程思维推荐"></a>培养函数式编程思维推荐</h1><ul>
-<li>函数式编程思维</li>
-</ul>
-<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><ul>
-<li>TCP/IP 详解 卷1：协议（比较难懂，建议边查资料边看）</li>
-</ul>
-<h1 id="框架书籍推荐"><a href="#框架书籍推荐" class="headerlink" title="框架书籍推荐"></a>框架书籍推荐</h1><h2 id="快餐书"><a href="#快餐书" class="headerlink" title="快餐书"></a>快餐书</h2><ul>
-<li>spring MVC + MyBatis开发从入门到项目实践</li>
-</ul>
-<h2 id="稍微高端一点的"><a href="#稍微高端一点的" class="headerlink" title="稍微高端一点的"></a>稍微高端一点的</h2><ul>
-<li>Spring 技术内幕（需要有一定基础）</li>
-</ul>
-<h1 id="中间件书籍推荐"><a href="#中间件书籍推荐" class="headerlink" title="中间件书籍推荐"></a>中间件书籍推荐</h1><h2 id="搜索引擎-数据库"><a href="#搜索引擎-数据库" class="headerlink" title="搜索引擎 / 数据库"></a>搜索引擎 / 数据库</h2><ul>
-<li>Elasticsearch服务器开发（书有点老）</li>
-<li>Redis入门指南</li>
-</ul>
-</details>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/26/Java书籍推荐/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-D1. RGB Substring (easy version)-题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1020,83 +1003,57 @@
 
 
   
-    <article id="post-Java-学习清单" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java书籍推荐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/Java-学习清单/">Java 学习清单</a>
+      <a class="article-title" href="/2019/07/26/Java书籍推荐/">Java 学习书籍推荐</a>
     </h1>
   
 
         
-        <a href="/2019/07/26/Java-学习清单/" class="archive-article-date">
-  	<time datetime="2019-07-26T05:43:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
+        <a href="/2019/07/26/Java书籍推荐/" class="archive-article-date">
+  	<time datetime="2019-07-26T06:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Java自学指南"><a href="#Java自学指南" class="headerlink" title="Java自学指南"></a>Java自学指南</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
-<li>语言学习与了解（Java）</li>
-<li>基本算法</li>
-<li>基本网络知识：TCP/IP HTTP/HTTPS</li>
-<li>基本设计模式</li>
+        <h1 id="学习书籍推荐"><a href="#学习书籍推荐" class="headerlink" title="学习书籍推荐"></a>学习书籍推荐</h1><ul>
+<li>Java 编程思想(第四版)</li>
 </ul>
 <blockquote>
-<p>不用特别去看，用什么看什么</p>
+<p>这本书推荐有一定基础再看</p>
 </blockquote>
-<hr>
 <details>
 <summary>展开查看</summary>
 
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
-<li>操作系统：Linux (CentOS)</li>
+<h2 id="并发编程推荐"><a href="#并发编程推荐" class="headerlink" title="并发编程推荐"></a>并发编程推荐</h2><ul>
+<li>Java并发编程实战(初学不用看，做企业级开发有用，多线程精髓)</li>
 </ul>
-<blockquote>
-<p>有时间可以看一点，现在windows做</p>
-</blockquote>
-<ul>
-<li>代码管理：SVN / Git</li>
-<li>Java的项目管理工具：Maven / Gradle</li>
+<h1 id="JVM推荐"><a href="#JVM推荐" class="headerlink" title="JVM推荐"></a>JVM推荐</h1><ul>
+<li>深入理解Java虚拟机</li>
 </ul>
-<hr>
-<h2 id="框架方面"><a href="#框架方面" class="headerlink" title="框架方面"></a>框架方面</h2><h4 id="应用层框架"><a href="#应用层框架" class="headerlink" title="应用层框架"></a>应用层框架</h4><ul>
-<li><del>ssh spring + structs + hibernate</del>(老了)</li>
-<li>ssm spring + springmvc + mybatis</li>
-<li>spring boot(开发网页更好用,好上手)</li>
+<h1 id="培养函数式编程思维推荐"><a href="#培养函数式编程思维推荐" class="headerlink" title="培养函数式编程思维推荐"></a>培养函数式编程思维推荐</h1><ul>
+<li>函数式编程思维</li>
 </ul>
-<h4 id="各种中间件"><a href="#各种中间件" class="headerlink" title="各种中间件"></a>各种中间件</h4><ul>
-<li>MQ 消息队列</li>
-<li>RPC 通信框架</li>
-<li>elasticsearch 数据库 搜索引擎</li>
+<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><ul>
+<li>TCP/IP 详解 卷1：协议（比较难懂，建议边查资料边看）</li>
 </ul>
-<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ul>
-<li>SQL: MySQL</li>
-<li>NoSQL: Redis(做缓存的) mongodb</li>
+<h1 id="框架书籍推荐"><a href="#框架书籍推荐" class="headerlink" title="框架书籍推荐"></a>框架书籍推荐</h1><h2 id="快餐书"><a href="#快餐书" class="headerlink" title="快餐书"></a>快餐书</h2><ul>
+<li>spring MVC + MyBatis开发从入门到项目实践</li>
 </ul>
-<hr>
-<h2 id="结构方面"><a href="#结构方面" class="headerlink" title="结构方面"></a>结构方面</h2><h4 id="分布式-微服务"><a href="#分布式-微服务" class="headerlink" title="分布式/微服务"></a>分布式/微服务</h4><ul>
-<li>spring cloud</li>
-<li>dubbo</li>
-<li>rpc 通信框架</li>
+<h2 id="稍微高端一点的"><a href="#稍微高端一点的" class="headerlink" title="稍微高端一点的"></a>稍微高端一点的</h2><ul>
+<li>Spring 技术内幕（需要有一定基础）</li>
 </ul>
-<h4 id="虚拟化-容器化技术"><a href="#虚拟化-容器化技术" class="headerlink" title="虚拟化/容器化技术"></a>虚拟化/容器化技术</h4><ul>
-<li>Docker 容器化</li>
-<li>k8S 容器集群(可以做类似阿里云的小服务器)</li>
+<h1 id="中间件书籍推荐"><a href="#中间件书籍推荐" class="headerlink" title="中间件书籍推荐"></a>中间件书籍推荐</h1><h2 id="搜索引擎-数据库"><a href="#搜索引擎-数据库" class="headerlink" title="搜索引擎 / 数据库"></a>搜索引擎 / 数据库</h2><ul>
+<li>Elasticsearch服务器开发（书有点老）</li>
+<li>Redis入门指南</li>
 </ul>
-<hr>
-<h2 id="关注源码与性能-难度最高"><a href="#关注源码与性能-难度最高" class="headerlink" title="关注源码与性能(难度最高)"></a>关注源码与性能(难度最高)</h2><ul>
-<li>JDK 源码及部分设计思想</li>
-<li>Spring 源码</li>
-<li>JVM 细节与排错</li>
-<li>高并发 / 高可用</li>
-</ul>
-<hr>
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://www.codesheep.cn/" target="_blank" rel="noopener">codesheep</a></p>
 </details>
       
 
@@ -1110,11 +1067,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习清单</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">书籍推荐</a>
         		</li>
       		
 		</ul>
@@ -1124,7 +1081,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/26/Java-学习清单/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/26/Java书籍推荐/">展开全文 >></a>
         </p>
       
 
@@ -1255,18 +1212,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抽象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vector</a>
               </li>
              
@@ -1279,19 +1224,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存超限</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抽象</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1307,19 +1248,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存超限</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">双端队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贡献</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1331,7 +1284,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
