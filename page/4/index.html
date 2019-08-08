@@ -152,6 +152,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ACM训练赛2-F题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/25/ACM训练赛2-F题解/">ACM训练赛2-F题解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/25/ACM训练赛2-F题解/" class="archive-article-date">
+  	<time datetime="2019-07-25T12:19:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313957#problem/F" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>You are given two arrays a and b, both of length n. All elements of both arrays are from 0 to n−1.</p>
+<p>You can reorder elements of the array b (if you want, you may leave the order of elements as it is). After that, let array c be the array of length n, the i-th element of this array is ci=(ai+bi)%n, where x%y is x modulo y.</p>
+<p>Your task is to reorder elements of the array b to obtain the lexicographically minimum possible array c.</p>
+<p>Array x of length n is lexicographically less than array y of length n, if there exists such i (1≤i≤n), that xi&lt;yi, and for any j (1≤j&lt;i) xj=yj.</p>
+<details>
+<summary>展开查看</summary>
+
+<p>Input<br>The first line of the input contains one integer n (1≤n≤2⋅105) — the number of elements in a, b and c.</p>
+<p>The second line of the input contains n integers a1,a2,…,an (0≤ai&lt;n), where ai is the i-th element of a.</p>
+<p>The third line of the input contains n integers b1,b2,…,bn (0≤bi&lt;n), where bi is the i-th element of b.</p>
+<p>Output<br>Print the lexicographically minimum possible array c. Recall that your task is to reorder elements of the array b and obtain the lexicographically minimum possible array c, where the i-th element of c is ci=(ai+bi)%n.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><blockquote>
+<p>因为要求ai+bi % n为字典序，所以就要求取余后尽可能的小，所以先在b中找n-ai，如果没有找第一个比它大的数。<del>我也不知道为啥要找大的，这是个数学问题</del></p>
+</blockquote>
+<p><img src="data:image/jpg;base64,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" alt="我也不知道是啥"></p>
+<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn = 200010;</span><br><span class="line">vector&lt;int&gt; v;</span><br><span class="line">multiset&lt;int&gt; st;</span><br><span class="line">int a[maxn];</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		v.push_back(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		int b;</span><br><span class="line">		cin &gt;&gt; b;</span><br><span class="line">		st.insert(b);</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		auto u = st.lower_bound(n-v[i]);</span><br><span class="line">		//利用二分查找返回第一个大于等于参数的位置</span><br><span class="line">		if(u == st.end())</span><br><span class="line">			u = st.begin();</span><br><span class="line">		a[i] = (*u+v[i]) % n;</span><br><span class="line">		st.erase(u); </span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">		if(i == 0)</span><br><span class="line">			cout &lt;&lt; a[0];</span><br><span class="line">		else</span><br><span class="line">			cout &lt;&lt; &quot; &quot; &lt;&lt; a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://www.cnblogs.com/letlifestop/p/10924177.html" target="_blank" rel="noopener">https://www.cnblogs.com/letlifestop/p/10924177.html</a></p>
+</details>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">multiset</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/25/ACM训练赛2-F题解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-先记住这个题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -959,98 +1054,6 @@
 
 
   
-    <article id="post-acm训练赛-C题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/23/acm训练赛-C题解/">acm训练赛-Computer Game</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/23/acm训练赛-C题解/" class="archive-article-date">
-  	<time datetime="2019-07-23T00:42:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="传送门"><a href="#传送门" class="headerlink" title="传送门"></a><a href="https://vjudge.net/contest/313088#problem/C" target="_blank" rel="noopener">传送门</a></h1><h1 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h1><p>Vova is playing a computer game. There are in total n turns in the game and Vova really wants to play all of them. The initial charge of his laptop battery (i.e. the charge before the start of the game) is k.</p>
-<p>During each turn Vova can choose what to do:</p>
-<p>If the current charge of his laptop battery is strictly greater than a, Vova can just play, and then the charge of his laptop battery will decrease by a;<br>if the current charge of his laptop battery is strictly greater than b (b&lt;a), Vova can play and charge his laptop, and then the charge of his laptop battery will decrease by b;<br>if the current charge of his laptop battery is less than or equal to a and b at the same time then Vova cannot do anything and loses the game.<br>Regardless of Vova’s turns the charge of the laptop battery is always decreases.</p>
-<p>Vova wants to complete the game (Vova can complete the game if after each of n turns the charge of the laptop battery is strictly greater than 0). Vova has to play exactly n turns. Among all possible ways to complete the game, Vova wants to choose the one where the number of turns when he just plays (first type turn) is the maximum possible. It is possible that Vova cannot complete the game at all.</p>
-<p>Your task is to find out the maximum possible number of turns Vova can just play (make the first type turn) or report that Vova cannot complete the game.</p>
-<p>You have to answer q independent queries.</p>
-<details>
-<summary>展开查看</summary>
-
-<p>Input<br>The first line of the input contains one integer q (1≤q≤105) — the number of queries. Each query is presented by a single line.</p>
-<p>The only line of the query contains four integers k,n,a and b (1≤k,n≤109,1≤b&lt;a≤109) — the initial charge of Vova’s laptop battery, the number of turns in the game and values a and b, correspondingly.</p>
-<p>Output<br>For each query print one integer: -1 if Vova cannot complete the game or the maximum number of turns Vova can just play (make the first type turn) otherwise.</p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这是一个比较简单的数学问题，我们先根据题目用if语句判断最简单的不能玩电脑的情况。然后在能玩电脑的情况下，先用所有的回合都去待机，然后算出玩与待机之间的电量差，在剩余电量中扣除一点作为备用，剩下的电量转换去玩电脑。最后比较我们算出的次数与要求回合的大小，选小的。(防止溢出)。</p>
-<h1 id="代码详情"><a href="#代码详情" class="headerlink" title="代码详情"></a>代码详情</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">long long int k, n, a, b;</span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%lld%lld%lld%lld&quot;, &amp;k, &amp;n, &amp;a, &amp;b);</span><br><span class="line">	if (k&lt;=n*b)  //当要求回合数连待机也不能满足时输出-1 </span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;-1\n&quot;);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	long long int restMax = k - n*b;  </span><br><span class="line">        //先认为所有回合都待机 算出多余的电量 </span><br><span class="line">	long long int r = a - b;       </span><br><span class="line">        //将待机与使用的电量差算出来 </span><br><span class="line">	long long int w = (restMax-1) / r; </span><br><span class="line">        //留一格备用电，其他转化为玩电脑 </span><br><span class="line">	w = min(w, n);              </span><br><span class="line">      //这一句解决了很多问题，w&lt;n时为 w,w &gt;= n时 都为 n 不会越界 </span><br><span class="line">	printf(&quot;%lld\n&quot;, w);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int t;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;t);</span><br><span class="line">	while(t--)</span><br><span class="line">		test();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p><a href="https://blog.csdn.net/king9666/article/details/94048465" target="_blank" rel="noopener">https://blog.csdn.net/king9666/article/details/94048465</a></p>
-<ul>
-<li>CSDN博客</li>
-</ul>
-</details>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学问题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/23/acm训练赛-C题解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1148,43 +1151,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vector</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模拟</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贡献</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">书籍推荐</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">最小生成树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Prim 算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1196,11 +1163,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学问题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
+                <a href="javascript:void(0)" class="js-tag color2">vector</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1209,6 +1180,38 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">进制转化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">贡献</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习清单</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">书籍推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">最小生成树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Prim 算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
